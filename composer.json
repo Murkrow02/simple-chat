@@ -1,0 +1,26 @@
+{
+    "name": "murkrow/simple-chat",
+    "version": "0.1",
+    "autoload": {
+        "psr-4": {
+            "Murkrow\\Chat\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Murkrow"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "laravel/framework": "^10.17"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Murkrow\\Chat\\ChatServiceProvider"
+            ]
+        }
+    }
+}
