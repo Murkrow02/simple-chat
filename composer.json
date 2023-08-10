@@ -14,7 +14,8 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "laravel/framework": "^10.17"
+        "laravel/framework": "^10.17",
+        "livewire/livewire": "^2.12"
     },
     "extra": {
         "laravel": {
@@ -22,5 +23,10 @@
                 "Murkrow\\Chat\\ChatServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+        ]
     }
 }
