@@ -19,7 +19,7 @@ return new class extends Migration
         // Create table for associating conversations to users (Many-to-Many)
         Schema::create('user_chats_pivot', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('conversation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('chat_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -27,7 +27,7 @@ return new class extends Migration
         // Create table for storing messages
         Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('conversation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('chat_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('body');
             $table->timestamps();
