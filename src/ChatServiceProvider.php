@@ -1,8 +1,8 @@
 <?php
 
-namespace Murkrow\Otp;
+namespace Murkrow\Chat;
 
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Support\ServiceProvider;
 
 class ChatServiceProvider extends ServiceProvider
