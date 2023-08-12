@@ -4,7 +4,9 @@ namespace Murkrow\Chat\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Murkrow\Chat\Models\Chat;
+use Murkrow\Chat\Models\StartableChatCategory;
 
 /**
  * @method hasMany(string $class)
@@ -28,13 +30,13 @@ trait CanChat
     public function startPrivateChat($targetUserId): ?Chat
     {
         //Check that user exists and is not the same as the current user
-        $targetUser = $this->find($targetUserId);
+        $targetUser = config('simple-chat.user_class')->find($targetUserId);
         if(!$targetUser || $targetUserId == $this->id){
             return null;
         }
 
         //Check if chat already exists
-        $chat = $this->chats()->where('group', false)->whereHas('users', function($query) use ($targetUserId){
+        $chat = config('simple-chat.user_class')->chats()->where('group', false)->whereHas('users', function($query) use ($targetUserId){
             $query->where('user_id', $targetUserId);
         })->first();
 
@@ -53,5 +55,17 @@ trait CanChat
 
         //Return new chat
         return $chat;
+    }
+
+    /**
+     * Groups chats by category based on the type of chat that can be started
+     * This should be overridden in the user model to return the correct categories
+     * @return array
+     */
+    public function getStartableChatsCategories($filter) : array
+    {
+        return [
+            new StartableChatCategory('Users', config('simple-chat.user_class')::where('id', '!=', $this->id)->getQuery())
+        ];
     }
 }

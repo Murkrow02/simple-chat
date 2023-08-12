@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/create_chat_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/create_messages_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Http/Livewire/ChatView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/create_chat_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/create_user_chats_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/simple-chat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Http/Livewire/ChatsView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/StartableChatCategory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/Components/ChatCell.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Otp.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Chat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Chat.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Traits/CanChat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Traits/CanChat.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,27 +120,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/murkrow/Desktop/Repos/simple-chat/resources/views/livewire",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/murkrow/Desktop/Repos/simple-chat/resources/views/livewire&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/livewire" />
       <recent name="$PROJECT_DIR$/database/migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/components" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/src/Http" />
     </key>
@@ -160,6 +161,8 @@
       <option name="presentableId" value="Default" />
       <updated>1691660858146</updated>
       <workItem from="1691660860669" duration="15530000" />
+      <workItem from="1691779793300" duration="5068000" />
+      <workItem from="1691787094918" duration="3727000" />
     </task>
     <servers />
   </component>

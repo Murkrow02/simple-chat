@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Murkrow\Chat\Http\Livewire\ChatView;
+use Murkrow\Chat\Http\Livewire\ChatsView;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use Murkrow\Chat\Http\Livewire\ChatView;
 //Authenticate routes
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/chats/{chatId}', ChatView::class);
+    Route::get('/chats', ChatsView::class);
 });
 
 

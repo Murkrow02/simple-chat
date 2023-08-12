@@ -48,9 +48,11 @@ class Chat extends Model
         return $this->hasMany(Message::class);
     }
 
+
+
     public function users(): BelongsToMany
     {
         //Return from pivot user chats
-        return $this->belongsToMany('App\Models\User', 'user_chats_pivot', 'chat_id', 'user_id');
+        return $this->belongsToMany(config('user_class'), 'user_chats_pivot', 'chat_id', 'user_id');
     }
 }

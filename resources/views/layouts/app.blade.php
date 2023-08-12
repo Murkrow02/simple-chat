@@ -79,6 +79,46 @@
             padding: 8px 15px;
             cursor: pointer;
         }
+
+        /* ... (existing styles) ... */
+
+        .chats-list {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .chat-cell {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .chat-cell img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .chat-info {
+            flex: 1;
+        }
+
+        .chat-title {
+            font-weight: bold;
+        }
+
+        .chat-desc {
+            color: #777;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
