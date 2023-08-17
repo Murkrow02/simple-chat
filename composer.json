@@ -11,11 +11,11 @@
             "name": "Murkrow"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "laravel/framework": "^10.17",
-        "livewire/livewire": "^2.12"
+        "livewire/livewire": "^3.0@beta"
     },
     "extra": {
         "laravel": {

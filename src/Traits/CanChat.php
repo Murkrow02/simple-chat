@@ -30,13 +30,14 @@ trait CanChat
     public function startPrivateChat($targetUserId): ?Chat
     {
         //Check that user exists and is not the same as the current user
-        $targetUser = config('simple-chat.user_class')->find($targetUserId);
+        $targetUser = config('simple-chat.user_class')::find($targetUserId);
         if(!$targetUser || $targetUserId == $this->id){
             return null;
         }
 
+
         //Check if chat already exists
-        $chat = config('simple-chat.user_class')->chats()->where('group', false)->whereHas('users', function($query) use ($targetUserId){
+        $chat = $this->chats()->whereHas('users', function($query) use ($targetUserId){
             $query->where('user_id', $targetUserId);
         })->first();
 

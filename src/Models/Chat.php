@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property string $title
  * @property bool $group
+ * @method static findOrFail($chatId)
  */
 class Chat extends Model
 {
@@ -28,9 +29,9 @@ class Chat extends Model
      * Appends a new message to the chat
      * @param int $userId
      * @param string $message
-     * @return Model
+     * @return Message
      */
-    public function addTextMessage(int $userId, string $message): Model
+    public function addTextMessage(int $userId, string $message): Message
     {
         //Create new message
         $newMessage = new Message();
@@ -53,6 +54,6 @@ class Chat extends Model
     public function users(): BelongsToMany
     {
         //Return from pivot user chats
-        return $this->belongsToMany(config('user_class'), 'user_chats_pivot', 'chat_id', 'user_id');
+        return $this->belongsToMany(config('simple-chat.user_class'), 'user_chats_pivot', 'chat_id', 'user_id');
     }
 }

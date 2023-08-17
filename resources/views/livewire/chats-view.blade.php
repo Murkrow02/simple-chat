@@ -3,10 +3,13 @@
 
     <div class="chats-list">
 
-        <x-chat::chat-cell />
-
-
-
+        @foreach($chats as $chat)
+            <x-chat::chat-cell :id="$chat['id']"
+                               :chatName="$chat['title']"
+                               secondLine="TEST"
+                               timeStamp=""
+                               imageUrl=""/>
+        @endforeach
     </div>
 
 
@@ -19,6 +22,7 @@
                 window.location.href = `/chats/${chatId}`;
             });
         });
+
     </script>
 
 </div>

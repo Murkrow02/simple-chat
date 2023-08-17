@@ -5,8 +5,8 @@ namespace Murkrow\Chat;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Murkrow\Chat\Http\Livewire\ChatCell;
 use Murkrow\Chat\Http\Livewire\ChatView;
-use Murkrow\Chat\View\Components\ChatCell;
 
 class ChatServiceProvider extends ServiceProvider
 {
@@ -17,21 +17,19 @@ class ChatServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->mergeConfigFrom(__DIR__.'/../config/simple-chat.php', 'simple-chat');
 
-        //
-        $this->loadViewComponentsAs('chat', [
-            ChatCell::class,
-        ]);
-
-        Livewire::component('murkrow.chat.http.livewire.chat-view', ChatView::class);
-        Livewire::component('murkrow.chat.http.components.chat-cell', ChatCell::class);
 
 
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/simple-chat.php' => config_path('simple-chat.php'),
-        ], 'config');
+            __DIR__.'/../config/simple-chat.php' => config_path('simple-chat.php'),], 'config');
+        $this->publishes([
+            __DIR__.'/../resources/js' => public_path('js/simple-chat'),
+        ], 'public');
+
+
+        Livewire::component('murkrow.chat.http.livewire.chat-view', ChatView::class);
     }
 }

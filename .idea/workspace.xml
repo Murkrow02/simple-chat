@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/simple-chat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Http/Livewire/ChatsView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/StartableChatCategory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Components/ChatCell.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/avatar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/Utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Http/Livewire/ChatView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Livewire/ChatView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Http/Livewire/ChatsView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Livewire/ChatsView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Chat.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Traits/CanChat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Traits/CanChat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Components/ChatCell.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +115,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Tmv1ul05FeD60V8ceognacyShz" />
@@ -125,7 +131,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/murkrow/Desktop/Repos/simple-chat/resources/views/livewire&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/murkrow/Desktop/Repos/simple-chat&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -137,11 +143,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/resources/views/livewire" />
       <recent name="$PROJECT_DIR$/database/migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/components" />
+      <recent name="$PROJECT_DIR$/resources/views/livewire" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/src/Http" />
     </key>
@@ -163,6 +171,9 @@
       <workItem from="1691660860669" duration="15530000" />
       <workItem from="1691779793300" duration="5068000" />
       <workItem from="1691787094918" duration="3727000" />
+      <workItem from="1692037070169" duration="1174000" />
+      <workItem from="1692179861784" duration="10403000" />
+      <workItem from="1692203331884" duration="11435000" />
     </task>
     <servers />
   </component>

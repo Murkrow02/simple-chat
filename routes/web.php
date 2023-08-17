@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Murkrow\Chat\Http\Controllers\ChatController;
 use Murkrow\Chat\Http\Livewire\ChatView;
 use Murkrow\Chat\Http\Livewire\ChatsView;
 
@@ -19,6 +20,10 @@ use Murkrow\Chat\Http\Livewire\ChatsView;
 Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/chats/{chatId}', ChatView::class);
     Route::get('/chats', ChatsView::class);
+
+    //Post new message to chat
+    Route::post('/newmessage', [ChatController::class, 'newMessage']);
+
 });
 
 

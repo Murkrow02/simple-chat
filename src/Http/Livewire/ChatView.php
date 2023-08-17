@@ -4,7 +4,6 @@ namespace Murkrow\Chat\Http\Livewire;
 
 use Livewire\Component;
 use Murkrow\Chat\Models\Chat;
-use Murkrow\Chat\Models\Message;
 
 class ChatView extends Component
 {
@@ -21,7 +20,9 @@ class ChatView extends Component
 
         //Get all messages from chat
         $this->loggedUser = auth()->user();
-        $this->messages = $this->loggedUser->chats()->findOrFail($chatId)->messages()->get()->toArray();
+        $this->messages = $this->loggedUser
+            ->chats()->findOrFail($chatId)
+            ->messages()->get(['id','body','user_id'])->toArray();
 
         //Get chat title
         $this->chatTitle = $this->chat->group ?
@@ -40,12 +41,13 @@ class ChatView extends Component
      */
     public function sendMessage(): void
     {
+
         //Return if message is empty
         if (empty($this->newMessage)) {
             return;
         }
 
-        //Validate message
+        //Validate message TODO: on client
 //        $this->validate([
 //            'newMessage' => 'required|min:1|max:255',
 //        ]);
@@ -53,16 +55,12 @@ class ChatView extends Component
         //Add message to chat
         $message = $this->chat->addTextMessage($this->loggedUser->id, $this->newMessage);
 
-        //Add message to messages array
-        $this->messages[] = $message->toArray();
-
         //Reset new message
         $this->newMessage = '';
-        $this->emit('messageSent');
+        $this->dispatch('new-message', message: $message->body, sentByLoggedUser: true);
     }
 
-
-
+    public bool $firstRender = true;
     public function render()
     {
         return view('chat::livewire.chat-view')->layout('chat::layouts.app');
