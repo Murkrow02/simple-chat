@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let defaultHeaders = {
+            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -124,8 +132,12 @@
 <body>
 
 @livewireScripts
+
+
+<script src="/js/simple-chat/simple-chat.js"></script>
 <script src="/js/simple-chat/avatar.js"></script>
-{{--<script src="{{ asset('vendor/livewire/livewire.js') }}"></script>--}}
+<script src="/js/simple-chat/axios.js"></script>
+
 
 <!-- Component rendered here -->
 {{ $slot }}

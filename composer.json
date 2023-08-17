@@ -15,7 +15,8 @@
     "prefer-stable": true,
     "require": {
         "laravel/framework": "^10.17",
-        "livewire/livewire": "^3.0@beta"
+        "livewire/livewire": "^3.0@beta",
+        "pusher/pusher-php-server": "*"
     },
     "extra": {
         "laravel": {
@@ -26,7 +27,9 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
+            "@php artisan vendor:publish --tag=public",
+            "@npm install --save-dev laravel-echo pusher-js"
         ]
     }
 }

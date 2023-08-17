@@ -43,40 +43,32 @@
             });
 
             scrollToBottom();
+
+
+            const channel = pusher.subscribe('chat');
+            channel.bind('NewChatMessage', function(data) {
+                // Handle the received chat message data here
+                console.log('New chat message:', data.message);
+                // You can update your chat UI with the new message
+            });
         })
 
-        function sendNewMessage(){
+        function sendNewMessage() {
 
-
-            const formData = new FormData();
-            formData.append('chat_id', '1');
-            formData.append('body', userMessageInput.value);
-
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-            fetch('/newmessage', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                    'Accept': 'application/json', // Optional: Specify the response format
-                    // Add any other headers you need
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    addMessage(userMessageInput.value, true);
-                    scrollToBottom();
+            axios.post('/newmessage', {
+                chat_id: 1,
+                body: userMessageInput.value
+            }, defaultHeaders)
+                .then(function (response) {
                     userMessageInput.value = '';
+                    addMessage(response.data.body, true);
+                    scrollToBottom();
+                    console.log(response);
                 })
-                .catch(error => {
-                    console.error('Error updating user details:', error);
+                .catch(function (error) {
+                    console.log(error);
                 });
         }
-
-
-
-
     </script>
 </div>
 
