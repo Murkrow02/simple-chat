@@ -15,15 +15,24 @@ class NewMessageEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public string $message;
+    private Message $message;
+    public string $body;
 
     public function __construct($message)
     {
         $this->message = $message;
+        $this->body = $message->body;
     }
 
     public function broadcastOn(): Channel
     {
-        return new Channel('chat');
+        return new PrivateChannel('chat.'.$this->message->chat_id);
+        //return new Channel('chat.'.$this->message->chat_id);
+
+    }
+
+    public function broadcastAs(): string
+    {
+        return 'new-message';
     }
 }

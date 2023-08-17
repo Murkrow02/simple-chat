@@ -22,14 +22,18 @@ class ChatController extends Controller
             abort(403);
         }
 
-        /*  @var Message $newMessage
-        Add message to chat  */
-        $newMessage = $chat->addTextMessage($loggedUser->id, request('body'))->only(['id', 'body', 'user_id']);
+        //Add message to chat
+        $newMessage = $chat->addTextMessage($loggedUser->id, request('body'));
 
-        //Broadcast new message (in background to not stop request)
-        broadcast(new NewMessageEvent($newMessage['body']));//->toOthers();
+        try {
+            NewMessageEvent::dispatch($newMessage);
 
-        return response()->json($newMessage);
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage(), 500);
+        }
+
+
+        return response()->json($newMessage->only(['id', 'body', 'user_id']));
     }
 
 

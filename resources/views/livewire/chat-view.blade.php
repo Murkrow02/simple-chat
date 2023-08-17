@@ -44,12 +44,9 @@
 
             scrollToBottom();
 
-
-            const channel = pusher.subscribe('chat');
-            channel.bind('NewChatMessage', function(data) {
-                // Handle the received chat message data here
-                console.log('New chat message:', data.message);
-                // You can update your chat UI with the new message
+            // Listen for new messages
+            Echo.private('chat.{{$chat['id']}}').listen('.new-message', function(data) {
+                addMessage(data.body, false);
             });
         })
 
@@ -63,7 +60,6 @@
                     userMessageInput.value = '';
                     addMessage(response.data.body, true);
                     scrollToBottom();
-                    console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);

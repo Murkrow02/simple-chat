@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/axios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/simple-chat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Events/NewMessageEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/axios.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Events/NewMessageEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/NewMessageEvent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +181,7 @@
       <workItem from="1691787094918" duration="3727000" />
       <workItem from="1692037070169" duration="1174000" />
       <workItem from="1692179861784" duration="10403000" />
-      <workItem from="1692203331884" duration="19356000" />
+      <workItem from="1692203331884" duration="27547000" />
     </task>
     <servers />
   </component>

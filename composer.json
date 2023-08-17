@@ -29,7 +29,7 @@
         "post-autoload-dump": [
             "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
             "@php artisan vendor:publish --tag=public",
-            "@npm install --save-dev laravel-echo pusher-js"
+            "@npm install --save-dev laravel-echo pusher-js axios"
         ]
     }
 }

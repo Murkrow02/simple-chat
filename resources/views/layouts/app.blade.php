@@ -12,6 +12,9 @@
             'Accept': 'application/json'
         };
     </script>
+
+    <!--Include vite generated file in order to use pusher npm-->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -132,8 +135,6 @@
 <body>
 
 @livewireScripts
-
-
 <script src="/js/simple-chat/simple-chat.js"></script>
 <script src="/js/simple-chat/avatar.js"></script>
 <script src="/js/simple-chat/axios.js"></script>
