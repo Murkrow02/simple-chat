@@ -16,7 +16,7 @@
 
         //Add on-click to open chat
         document.getElementById('chat-cell-{{$id}}').addEventListener('click', () => {
-                let url = '{{isset($isNewChat) && $isNewChat  ? "newchat" : "chats"}}';
+                let url = '{{isset($isNewChat) && $isNewChat  ? "chat/new" : "chat"}}';
                 window.location.href = `/${url}/{{$id}}`;
             });
     </script>

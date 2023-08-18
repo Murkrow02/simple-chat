@@ -54,6 +54,6 @@ class ChatController extends Controller
         //Start new chat with user
         $newChat = $loggedUser->startPrivateChat($targetUserId);
 
-        return redirect('chats/'.$newChat->id);
+        return redirect('chat/'.$newChat->id);
     }
 }

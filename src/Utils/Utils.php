@@ -1,20 +1,14 @@
 <?php
+namespace Murkrow\Chat\Utils;
 
+class Utils{
 
-function generateInitials(string $name): string {
-    $words = explode(' ', $name);
-    $initials = '';
-
-    $firstWord = $words[0] ?? '';
-    $lastWord = $words[count($words) - 1] ?? '';
-
-    if (!empty($firstWord)) {
-        $initials .= strtoupper(substr($firstWord, 0, 1));
+    /**
+     * Get the user class from config
+     */
+    static function getUserClass()
+    {
+        return config('simple-chat.user_class');
     }
-
-    if (!empty($lastWord) && strlen($initials) < 2) {
-        $initials .= strtoupper(substr($lastWord, 0, 1));
-    }
-
-    return $initials;
 }
+

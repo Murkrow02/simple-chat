@@ -1,11 +1,11 @@
 <div class="chats-list">
 
-    <a href="/newchat">Nuova chat</a>
+    <a href="/chat/new">Nuova chat</a>
 
     @foreach($chats as $chat)
         <x-chat::chat-cell :id="$chat['id']"
                            :chatName="$chat['title']"
-                           secondLine="TEST"
+                           secondLine=""
                            timeStamp=""
                            imageUrl=""/>
     @endforeach

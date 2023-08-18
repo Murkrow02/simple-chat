@@ -137,7 +137,6 @@
 @livewireScripts
 <script src="/js/simple-chat/simple-chat.js"></script>
 <script src="/js/simple-chat/avatar.js"></script>
-<script src="/js/simple-chat/axios.js"></script>
 
 
 <!-- Component rendered here -->

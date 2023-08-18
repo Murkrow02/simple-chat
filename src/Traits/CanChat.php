@@ -35,7 +35,7 @@ trait CanChat
         //Check that user exists and is not the same as the current user
         $targetUser = config('simple-chat.user_class')::find($targetUserId);
         if(!$targetUser || $targetUserId == $loggedUserId){
-            return null;
+            abort(404);
         }
 
         //Check if chat already exists
@@ -72,7 +72,7 @@ trait CanChat
     public function getStartableChatsCategories($filters) : array
     {
         return [
-            new StartableChatCategory('Users', config('simple-chat.user_class')::where('id', '!=', $this->id)->getQuery())
+            new StartableChatCategory('Users', getUserClass()::where('id', '!=', $this->id)->getQuery())
         ];
     }
 

@@ -52,8 +52,8 @@
 
         function sendNewMessage() {
 
-            axios.post('/newmessage', {
-                chat_id: 1,
+            axios.post('/chat/newmessage', {
+                chat_id: {{$chat['id']}},
                 body: userMessageInput.value
             }, defaultHeaders)
                 .then(function (response) {
