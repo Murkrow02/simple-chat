@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Models\StartableChatCategory;
+use Murkrow\Chat\Utils\Utils;
 
 /**
  * @method hasMany(string $class)
@@ -72,7 +73,7 @@ trait CanChat
     public function getStartableChatsCategories($filters) : array
     {
         return [
-            new StartableChatCategory('Users', getUserClass()::where('id', '!=', $this->id)->getQuery())
+            new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)->getQuery())
         ];
     }
 

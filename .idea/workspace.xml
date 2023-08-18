@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Http/Middleware/AuthTokenFromUrl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Traits/CanChat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Traits/CanChat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Utils.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +122,7 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Tmv1ul05FeD60V8ceognacyShz" />
@@ -185,7 +184,7 @@
       <workItem from="1692347972042" duration="598000" />
       <workItem from="1692348720389" duration="11310000" />
       <workItem from="1692369160827" duration="2445000" />
-      <workItem from="1692372435104" duration="1669000" />
+      <workItem from="1692372435104" duration="5840000" />
     </task>
     <servers />
   </component>

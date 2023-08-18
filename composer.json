@@ -16,7 +16,8 @@
     "require": {
         "laravel/framework": "^10.17",
         "livewire/livewire": "^3.0@beta",
-        "pusher/pusher-php-server": "*"
+        "pusher/pusher-php-server": "*",
+        "laravel/sanctum": "*"
     },
     "extra": {
         "laravel": {
