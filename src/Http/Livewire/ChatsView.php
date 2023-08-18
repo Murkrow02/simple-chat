@@ -2,6 +2,7 @@
 
 namespace Murkrow\Chat\Http\Livewire;
 
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Models\Message;
@@ -9,6 +10,7 @@ use Murkrow\Chat\Traits\CanChat;
 
 class ChatsView extends Component
 {
+
     //How many chats to download at once
     private static int $downloadLimit = 50;
 
