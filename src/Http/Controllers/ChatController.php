@@ -46,6 +46,7 @@ class ChatController extends Controller
     //Start new chat with requested user and redirect to chat view
     public function startNewChat($targetUserId): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
+
         /* @var CanChat $loggedUser */
         $loggedUser = auth()->user();
         if(!$loggedUser->canChatWith($targetUserId))

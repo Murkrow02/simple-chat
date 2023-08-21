@@ -73,7 +73,10 @@ trait CanChat
     public function getStartableChatsCategories($filters) : array
     {
         return [
-            new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)->getQuery())
+            new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)
+                ->where('id', '<', '7')->getQuery()),
+            new StartableChatCategory('Users2', Utils::getUserClass()::where('id', '!=', $this->id)
+                ->where('id', '>', '50')->getQuery())
         ];
     }
 

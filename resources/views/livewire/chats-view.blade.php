@@ -1,6 +1,6 @@
 <div class="chats-list">
 
-    <a href="/chat/new">Nuova chat</a>
+    <button onclick="window.location='/chat/new'+window.location.search;">Nuova chat</button>
 
     @foreach($chats as $chat)
         <x-chat::chat-cell :id="$chat['id']"

@@ -38,13 +38,15 @@ Route::prefix('chat')->middleware('web')->group(function () {
         //Token is valid, get user id
         Auth::loginUsingId($tokenMatch->tokenable->id);
 
-        //Redirect to chat view
-        return redirect('chat');
+        //Redirect to chat view and keep query parameters in url
+        $queryParams = request()->query();
+        return redirect('chat?' . http_build_query($queryParams));
     });
 
 
     //Authenticated routes
     Route::middleware('auth')->group(function () {
+
         //Get a list of users to start a new chat
         Route::get('new', NewChatView::class);
 
