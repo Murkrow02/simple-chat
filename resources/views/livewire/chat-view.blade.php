@@ -1,11 +1,6 @@
 
 <div class="chat-container">
 
-    <!-- Chat header -->
-    <div class="chat-header">
-        <h2>{{$chatTitle}}</h2>
-    </div>
-
     <!-- Chat messages -->
     <div class="chat-messages" id="chat-messages">
 
@@ -19,6 +14,10 @@
     </div>
 
     <script>
+
+        // Set the chat header title
+        setChatHeaderTitle('{{$chatTitle}}');
+
         const sendButton = document.getElementById('send-button');
         const userMessageInput = document.getElementById('user-input');
         const chatMessages = document.getElementById('chat-messages');

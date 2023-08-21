@@ -10,6 +10,10 @@ function getInitials(name) {
     return initials;
 }
 
+function setChatHeaderTitle(title){
+    document.getElementById('chat-header-title').innerText = title;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     //If in page there is an element with class chat-cell, then cycle through each element

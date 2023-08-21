@@ -1,5 +1,7 @@
 <div class="chats-list">
 
+
+
     <button onclick="window.location='/chat/new'+window.location.search;">Nuova chat</button>
 
     @foreach($chats as $chat)
@@ -12,6 +14,10 @@
 
 
     <script>
+
+        // Set the chat header title
+        setChatHeaderTitle('Chats');
+
 
         let startableChatsDiv = document.getElementById('startable-chats');
 

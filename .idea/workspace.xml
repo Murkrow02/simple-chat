@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/css/simple-chat.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/simple-chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/simple-chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/chat-cell.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/ChatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Livewire/NewChatView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Livewire/NewChatView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Traits/CanChat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Traits/CanChat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,7 @@
       <workItem from="1692372435104" duration="5840000" />
       <workItem from="1692439708106" duration="912000" />
       <workItem from="1692541507022" duration="10038000" />
-      <workItem from="1692626878965" duration="5265000" />
+      <workItem from="1692626878965" duration="9859000" />
     </task>
     <servers />
   </component>

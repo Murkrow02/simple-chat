@@ -27,4 +27,10 @@ $alreadyAddedIds = [];
         @endforeach
     @endforeach
 
+
+    <script>
+        // Set the chat header title
+        setChatHeaderTitle('Nuova chat');
+    </script>
+
 </div>
