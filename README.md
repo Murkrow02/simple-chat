@@ -2,16 +2,16 @@
 A simple Laravel package to add intuitive and simple chat logic to your application
 
 ## Installation
-1. Install the package via composer:
+1 - Install the package via composer:
 ```bash
 composer require murkrow/simple-chat
 ```
-2. Publish the package's config file:
+2 - Publish the package's config file:
 ```bash
 php artisan vendor:publish --tag=public
 ```
 
-3. Set your pusher credentials in your `.env` file:
+3 - Set your pusher credentials in your `.env` file:
 ```bash
 PUSHER_APP_ID=your-pusher-app-id
 PUSHER_APP_KEY=your-pusher-key
@@ -20,7 +20,7 @@ PUSHER_APP_CLUSTER=mt1
 BROADCAST_DRIVER=pusher
 ```
 
-4. Include also the following variables in your `.env` file:
+4 - Include also the following variables in your `.env` file:
 ```bash
 VITE_APP_NAME="${APP_NAME}"
 VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
@@ -30,17 +30,17 @@ VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-5. Install the laravel echo and pusher npm packages:
+5 - Install the laravel echo and pusher npm packages:
 ```bash
 npm install --save-dev laravel-echo pusher-js
 ```
 
-6. Install the laravel pusher composer package:
+6 - Install the laravel pusher composer package:
 ```bash
 composer require pusher/pusher-php-server
 ```
 
-7. Add the following code to your `resources/js/bootstrap.js` file:
+7 - Add the following code to your `resources/js/bootstrap.js` file:
 ```js
 import Echo from 'laravel-echo';
 
@@ -63,7 +63,7 @@ window.Echo = new Echo({
 > Make sure to have uncommented App\Providers\BroadcastServiceProvider::class in your config/app.php file
 
 ## Usage
-1. Add the `CanChat` trait to your User model:
+1 - Add the `CanChat` trait to your User model:
 ```php
 use Murkrow\Chat\Traits\CanChat;
 class User
@@ -72,4 +72,6 @@ class User
 }
 ```
 
-2. Finished!
+2 - Ove
+
+Finished!

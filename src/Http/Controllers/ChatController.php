@@ -43,18 +43,24 @@ class ChatController extends Controller
         return response()->json($newMessage->only(['id', 'body', 'user_id']));
     }
 
-    //Start new chat with requested user and redirect to chat view
+    /**
+     * Start new chat with requested user and redirect to chat view
+     * @param $targetUserId
+     * @return Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
+     */
     public function startNewChat($targetUserId): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
 
         /* @var CanChat $loggedUser */
         $loggedUser = auth()->user();
-        if(!$loggedUser->canChatWith($targetUserId))
-            abort(403);
 
         //Start new chat with user
         $newChat = $loggedUser->startPrivateChat($targetUserId);
+        if(!$newChat){
+            abort(404);
+        }
 
         return redirect('chat/'.$newChat->id);
     }
+
 }

@@ -33,11 +33,14 @@ trait CanChat
     {
         $loggedUserId = $this->id;
 
+        //Check that user can actually chat with target user
+        if($this->cannotChatWith($targetUserId))
+            return null;
+
         //Check that user exists and is not the same as the current user
         $targetUser = config('simple-chat.user_class')::find($targetUserId);
-        if(!$targetUser || $targetUserId == $loggedUserId){
-            abort(404);
-        }
+        if(!$targetUser || $targetUserId == $loggedUserId)
+            return null;
 
         //Check if chat already exists
         $chat = $this->chats()->whereHas('users', function($query) use ($targetUserId){
@@ -73,10 +76,7 @@ trait CanChat
     public function getStartableChatsCategories($filters) : array
     {
         return [
-            new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)
-                ->where('id', '<', '7')->getQuery()),
-            new StartableChatCategory('Users2', Utils::getUserClass()::where('id', '!=', $this->id)
-                ->where('id', '>', '50')->getQuery())
+            new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)->getQuery()),
         ];
     }
 
@@ -87,6 +87,14 @@ trait CanChat
     public function canChatWith($targetUser): bool
     {
         return true;
+    }
+
+    /**
+     * Basically calls canChatWith and negates the result
+     */
+    public function cannotChatWith($targetUser): bool
+    {
+        return !$this->canChatWith($targetUser);
     }
 
 }
