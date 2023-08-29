@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lang/it/chat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/simple-chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/simple-chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chat-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/chats-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/new-chat-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Livewire/NewChatView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Livewire/NewChatView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/StartableChatCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/StartableChatCategory.php" afterDir="false" />
-    </list>
+    <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +182,7 @@
       <workItem from="1692541507022" duration="10038000" />
       <workItem from="1692626878965" duration="14847000" />
       <workItem from="1692796045098" duration="598000" />
-      <workItem from="1693311430869" duration="3035000" />
+      <workItem from="1693311430869" duration="3415000" />
     </task>
     <servers />
   </component>
