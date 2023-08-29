@@ -9,8 +9,8 @@
     <!-- Chat input -->
     <div class="message-input">
         <input wire:model.defer="newMessage" type="text" class="input-field" id="user-input"
-               placeholder="Type your message...">
-        <button onclick="sendNewMessage()" class="send-button" id="send-button">Send</button>
+               placeholder="{{__('simple-chat::chat.write_message')}}">
+        <button onclick="sendNewMessage()" class="btn send-button" id="send-button">{{__('simple-chat::chat.send')}}</button>
     </div>
 
     <script>
@@ -51,6 +51,9 @@
 
         function sendNewMessage() {
 
+            //Disable send button
+            sendButton.disabled = true;
+
             axios.post('/chat/newmessage', {
                 chat_id: {{$chat['id']}},
                 body: userMessageInput.value
@@ -62,7 +65,11 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
+                }).finally(function () {
+                // always executed
+                sendButton.disabled = false;
+            });
+
         }
     </script>
 </div>

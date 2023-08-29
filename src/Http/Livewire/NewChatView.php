@@ -35,8 +35,9 @@ class NewChatView extends Component
         // Split chat categories with few items (which can be rendered immediately)
         // and the others (which will be loaded on demand)
         foreach ($categories as $category) {
+
             //if($category->query->count() < 10)
-                $this->eagerCategories[$category->title] = $category->query->get();
+                $this->eagerCategories[$category->title] = $category->query ? $category->query->get() : [];
            // else
            //     $this->lazyCategories[$category->title] = $category->query;
         }

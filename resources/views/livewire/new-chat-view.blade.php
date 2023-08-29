@@ -3,10 +3,14 @@ $alreadyAddedIds = [];
 ?>
 
 <div class="chats-list">
+
     @foreach ($eagerCategories as $title => $startableChats)
 
         <h3>{{$title}}</h3>
 
+        @if(count($startableChats) == 0)
+            <p>{{__('simple-chat::chat.no_startable_chats')}}</p>
+        @endif
         @foreach ($startableChats as $startableChat)
 
                 <?php
