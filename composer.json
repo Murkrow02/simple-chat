@@ -1,6 +1,6 @@
 {
     "name": "murkrow/simple-chat",
-    "version": "0.3",
+    "version": "0.4",
     "autoload": {
         "psr-4": {
             "Murkrow\\Chat\\": "src/"
