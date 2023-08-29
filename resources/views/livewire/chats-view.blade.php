@@ -1,7 +1,7 @@
 <div class="chats-list">
 
     @if($chats == null)
-            <p style="text-align: center; font-size: 30px">{{__('simple-chat::chat.no-chats')}}</p>
+            <p style="text-align: center; font-size: 30px">{{__('simple-chat::chat.no_chats')}}</p>
     @endif
 
     <!-- Start new chat -->
