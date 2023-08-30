@@ -15,6 +15,12 @@
         };
     </script>
 
+    <style>
+        :root{
+            --chat-primary: {{config('simple-chat.primary_color')}};
+        }
+    </style>
+
     <!--Include vite generated file in order to use pusher npm-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{asset('css/simple-chat/simple-chat.css')}}">

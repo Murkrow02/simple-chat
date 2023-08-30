@@ -10,7 +10,15 @@ function getInitials(name) {
     return initials;
 }
 
+// Function to replace HTML entities with their corresponding characters
+function decodeHtmlEntities(input) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = input;
+    return textarea.value;
+}
+
 function setChatHeaderTitle(title){
+    title = decodeHtmlEntities(title);
     document.getElementById('chat-header-title').innerText = title;
 }
 

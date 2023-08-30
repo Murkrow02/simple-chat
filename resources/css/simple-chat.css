@@ -83,6 +83,12 @@ body {
 .user-message {
     align-self: flex-end;
     text-align: right;
+
+}
+
+.user-message .message-text{
+    background-color: var(--chat-primary);
+    color: white;
 }
 
 .other-message {
