@@ -15,7 +15,6 @@ class ChatServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'chat');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        //$this->publishes(__DIR__.'/../config/simple-chat.php', 'simple-chat');
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'simple-chat');
 
     }
@@ -23,7 +22,7 @@ class ChatServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/simple-chat.php' => config_path('chat.php'),], 'config');
+            __DIR__.'/../config/simple-chat.php' => config_path('simple-chat.php'),], 'config');
         $this->publishes([
             __DIR__.'/../resources/js' => public_path('js/simple-chat'), ], 'public');
         $this->publishes([

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="" />
+    <list default="true" id="6ff03a2c-5bff-400b-8b39-46e28def3440" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/simple-chat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/simple-chat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/simple-chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/simple-chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatServiceProvider.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +123,10 @@
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2Tmv1ul05FeD60V8ceognacyShz" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -184,6 +194,8 @@
       <workItem from="1692796045098" duration="598000" />
       <workItem from="1693311430869" duration="7432000" />
       <workItem from="1693423670113" duration="1214000" />
+      <workItem from="1693474603639" duration="5450000" />
+      <workItem from="1693503227775" duration="1000" />
     </task>
     <servers />
   </component>
