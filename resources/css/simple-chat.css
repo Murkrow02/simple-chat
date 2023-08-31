@@ -109,7 +109,7 @@ body {
 .chat-header {
     display: flex;
     flex-direction: row;
-    background-color: #007bff;
+    background-color: var(--chat-primary);
     color: #ffffff;
     padding: 10px 20px;
     border-top-left-radius: 10px;
@@ -130,7 +130,7 @@ body {
 }
 
 .btn {
-    background-color: #007bff;
+    background-color: var(--chat-primary);
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -144,4 +144,40 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+/* Alert base styles */
+.alert {
+    text-align: center;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* Danger alert */
+.alert-danger {
+    color: rgb(210 164 25);
+    background-color: rgb(255, 238, 186);
+    border: 1px solid rgb(255, 193, 7);
+}
+
+/* Error alert */
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
+
+/* SVG icon */
+.alert-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }

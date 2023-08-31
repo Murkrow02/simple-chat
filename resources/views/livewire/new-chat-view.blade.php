@@ -4,6 +4,10 @@ $alreadyAddedIds = [];
 
 <div class="chats-list">
 
+    @if($errorMessage)
+        <x-chat::alert type="danger" :message="$errorMessage"/>
+    @endif
+
     @foreach ($eagerCategories as $title => $startableChats)
 
         <h3>{{$title}}</h3>
@@ -34,7 +38,7 @@ $alreadyAddedIds = [];
 
     <script>
         // Set the chat header title
-        setChatHeaderTitle('Nuova chat');
+        setChatHeaderTitle('{{__('simple-chat::chat.new_chat')}}');
     </script>
 
 </div>

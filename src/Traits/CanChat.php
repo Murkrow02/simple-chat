@@ -70,10 +70,11 @@ trait CanChat
     /**
      * Groups chats by category based on the type of chat that can be started
      * This should be overridden in the user model to return the correct categories
+     * If an error occurs, return a string with the error message, this will be displayed to the user
      * @param $filters
-     * @return array
+     * @return array|string
      */
-    public function getStartableChatsCategories($filters) : array
+    public function getStartableChatsCategories($filters) : array|string
     {
         return [
             new StartableChatCategory('Users', Utils::getUserClass()::where('id', '!=', $this->id)->getQuery()),

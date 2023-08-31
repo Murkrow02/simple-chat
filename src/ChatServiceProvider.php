@@ -15,7 +15,7 @@ class ChatServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'chat');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->mergeConfigFrom(__DIR__.'/../config/simple-chat.php', 'simple-chat');
+        //$this->publishes(__DIR__.'/../config/simple-chat.php', 'simple-chat');
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'simple-chat');
 
     }

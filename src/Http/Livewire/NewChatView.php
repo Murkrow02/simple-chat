@@ -21,6 +21,9 @@ class NewChatView extends Component
     //These categories will be loaded on demand
     public $lazyCategories = [];
 
+    //Error message to display
+    public ?string $errorMessage;
+
     public function mount()
     {
         /*  @var CanChat $loggedUser */
@@ -30,7 +33,19 @@ class NewChatView extends Component
         $queryParams = request()->query();
 
         //Get user startable chat categories
-        $categories = $loggedUser->getStartableChatsCategories($queryParams);
+        $result = $loggedUser->getStartableChatsCategories($queryParams);
+
+        //Check if return value is string (only display error message)
+        if(is_string($result))
+        {
+            $this->errorMessage = $result;
+            return;
+        }
+
+        /** At this point, $result is an array of StartableChatCategory
+         *  @var StartableChatCategory[] $categories
+         */
+        $categories = $result;
 
         // Split chat categories with few items (which can be rendered immediately)
         // and the others (which will be loaded on demand)

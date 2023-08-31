@@ -4,6 +4,7 @@ return [
     'chat' => 'Chat',
     'chats' => 'Chats',
     'new_message' => 'Nuovo messaggio',
+    'new_chat' => 'Nuova chat',
     'send' => 'Invia',
     'no_chats' => 'Non hai ancora iniziato nessuna chat',
     'write_message' => 'Scrivi un messaggio...',
