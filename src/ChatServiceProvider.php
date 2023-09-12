@@ -27,7 +27,8 @@ class ChatServiceProvider extends ServiceProvider
             __DIR__.'/../resources/js' => public_path('js/simple-chat'), ], 'public');
         $this->publishes([
             __DIR__.'/../resources/css' => public_path('css/simple-chat'), ], 'public');
-
+        $this->publishes([
+            __DIR__.'/../lang' => lang_path(''), ], 'lang');
 
         Livewire::component('murkrow.chat.http.livewire.chat-view', ChatView::class);
     }

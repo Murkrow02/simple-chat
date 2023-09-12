@@ -26,7 +26,7 @@ class ChatsView extends Component
         foreach ($chats as $chat) {
             //Set chat title if it is a private chat
             if(!$chat->group && $chat->title == null)
-                $chat->title = $chat->users()->where('user_id', '!=', auth()->user()->id)->first()->full_name;
+                $chat->title = $chat->users()->where('user_id', '!=', auth()->user()->id)->first()->name;
             $this->chats[] = $chat;
         }
     }

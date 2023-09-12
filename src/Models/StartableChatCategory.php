@@ -9,11 +9,15 @@ class StartableChatCategory
     public string $title;
 
     //Used to get the users which a chat can be started with
-    public ?Builder $query;
+    public Builder|\Illuminate\Database\Eloquent\Builder|null $query;
 
-    public function __construct(string $title, ?Builder $query)
+    //Used to force collapse the category even if results are few
+    public bool $forceCollapse;
+
+    public function __construct(string $title,  Builder|\Illuminate\Database\Eloquent\Builder|null $query, bool $forceCollapse = false)
     {
         $this->title = $title;
         $this->query = $query;
+        $this->forceCollapse = $forceCollapse;
     }
 }

@@ -6,9 +6,9 @@ A simple Laravel package to add intuitive and simple chat logic to your applicat
 ```bash
 composer require murkrow/simple-chat
 ```
-2 - Publish the package's config file:
+2 - Publish the package files:
 ```bash
-php artisan vendor:publish --tag=public
+php artisan vendor:publish --provider="Murkrow\Chat\ChatServiceProvider" --force
 ```
 
 3 - Set your pusher credentials in your `.env` file:

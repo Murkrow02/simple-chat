@@ -7,6 +7,7 @@ use Laravel\Sanctum\Sanctum;
 use Murkrow\Chat\Http\Controllers\ChatController;
 use Murkrow\Chat\Http\Livewire\ChatsView;
 use Murkrow\Chat\Http\Livewire\ChatView;
+use Murkrow\Chat\Http\Livewire\NewChatFromCategoryView;
 use Murkrow\Chat\Http\Livewire\NewChatView;
 use Murkrow\Chat\Http\Middleware\AuthTokenFromUrl;
 use Murkrow\Chat\Utils\Utils;
@@ -49,6 +50,9 @@ Route::prefix('chat')->middleware('web')->group(function () {
 
         //Get a list of users to start a new chat
         Route::get('new', NewChatView::class);
+
+        //Get a list of users to start a new chat from a specific category
+        Route::get('newFromCategory/{categoryId}', NewChatFromCategoryView::class);
 
         //Post new message to chat
         Route::post('newmessage', [ChatController::class, 'newMessage']);

@@ -16,10 +16,10 @@ class NewChatView extends Component
     private static int $downloadLimit = 50;
 
     //These categories can be immediately rendered as they have few items
-    public $eagerCategories = [];
+    public $listedCategories = []; // This array will be filled with the startable chats
 
     //These categories will be loaded on demand
-    public $lazyCategories = [];
+    public $collapsedCategories = []; // This array will be filled with the id of the lazy category to be loaded
 
     //Error message to display
     public ?string $errorMessage;
@@ -49,12 +49,15 @@ class NewChatView extends Component
 
         // Split chat categories with few items (which can be rendered immediately)
         // and the others (which will be loaded on demand)
-        foreach ($categories as $category) {
+        foreach ($categories as $index => $category) {
 
-            //if($category->query->count() < 10)
-                $this->eagerCategories[$category->title] = $category->query ? $category->query->get() : [];
-           // else
-           //     $this->lazyCategories[$category->title] = $category->query;
+            //A lot of items or forced to collapse
+            if ($category->query->count() > 10 || $category->forceCollapse)
+                $this->collapsedCategories[$category->title] = $index;
+
+            //Few items
+            else
+                $this->listedCategories[$category->title] = $category->query ? $category->query->get() : [];
         }
     }
 

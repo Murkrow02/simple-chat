@@ -30,11 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
         //Get data-id from cell
         let id = cell.getAttribute('data-chat-id');
 
-        //Set cell avatar
-        new Avatar(document.getElementById('avatar-' + id), {
-            'useGravatar': false,
-            'initials': getInitials(document.getElementById('chat-title-' + id).innerText),
+        //Set cell avatar for each element with class avatar-<id> (need to use class instead of id because same id could be used in multiple cells)
+        document.querySelectorAll('.avatar-' + id).forEach((avatar) => {
+            new Avatar(avatar, {
+                'useGravatar': false,
+                'initials': getInitials(document.querySelector('.chat-title-' + id).innerText),
+            });
         });
+
 
         //Add on-click to open chat
         let openNewChat = cell.getAttribute('data-chat-new') === 'true';

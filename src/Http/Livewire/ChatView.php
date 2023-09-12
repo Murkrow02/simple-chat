@@ -31,7 +31,7 @@ class ChatView extends Component
             $this->chat->title :
 
             //If chat is a private chat, return the other user name
-            $this->chat->users()->where('user_id', '!=', $this->loggedUser->id)->first()->full_name;
+            $this->chat->users()->where('user_id', '!=', $this->loggedUser->id)->first()->name;
     }
 
 

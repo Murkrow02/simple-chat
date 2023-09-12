@@ -1,6 +1,11 @@
 
 <div class="chat-container">
 
+    <!-- No messages -->
+    <div id="no-messages-alert" style="padding: 15px">
+        <x-chat::alert type="info" :message="__('simple-chat::chat.no_messages')"/>
+    </div>
+
     <!-- Chat messages -->
     <div class="chat-messages" id="chat-messages">
 
@@ -28,6 +33,7 @@
 
         // Append new message to chat messages
         function addMessage(message, sentByLoggedUser) {
+            document.getElementById('no-messages-alert').style.display = 'none';
             let msgClass = sentByLoggedUser ? 'user-message' : 'other-message';
             chatMessages.innerHTML += `<div class="message ${msgClass}"><div class="message-text">${message}</div></div>`;
         }
