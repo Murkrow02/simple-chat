@@ -57,7 +57,7 @@ class NewChatView extends Component
 
             //Few items
             else
-                $this->listedCategories[$category->title] = $category->query ? $category->query->get() : [];
+                $this->listedCategories[$category->title] = $category->query ? $category->query->get(['id','name']) : [];
         }
     }
 

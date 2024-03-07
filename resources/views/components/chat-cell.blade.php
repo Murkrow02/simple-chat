@@ -7,4 +7,8 @@
         <div class="chat-desc">{{$secondLine}}</div>
     </div>
     <div class="chat-time">{{$timeStamp}}</div>
+
+    <script>
+        applyAvatarAndActionToUserId('{{$id}}');
+    </script>
 </div>

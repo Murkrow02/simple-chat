@@ -51,9 +51,6 @@ Route::prefix('chat')->middleware('web')->group(function () {
         //Get a list of users to start a new chat
         Route::get('new', NewChatView::class);
 
-        //Get a list of users to start a new chat from a specific category
-        Route::get('newFromCategory/{categoryId}', NewChatFromCategoryView::class);
-
         //Post new message to chat
         Route::post('newmessage', [ChatController::class, 'newMessage']);
 
@@ -65,6 +62,9 @@ Route::prefix('chat')->middleware('web')->group(function () {
 
         //Return all started chats
         Route::get('', ChatsView::class);
+
+        //Lazy load a new page for a category of users to start a new chat
+        Route::get('loadCategoryPage/{categoryIndex}/{page}',  [ChatController::class, 'loadCategoryPage']);
     });
 });
 

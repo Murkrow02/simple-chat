@@ -27,7 +27,7 @@
 </head>
 
 <body>
-
+<script src="/js/simple-chat/avatar.js"></script>
 <script src="/js/simple-chat/simple-chat.js"></script>
 
 <!-- Header -->
@@ -50,7 +50,7 @@
 {{ $slot }}
 
 @livewireScripts
-<script src="/js/simple-chat/avatar.js"></script>
+
 
 </body>
 

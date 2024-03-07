@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 use Murkrow\Chat\Events\NewMessageEvent;
 use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Models\Message;
@@ -61,6 +62,51 @@ class ChatController extends Controller
         }
 
         return redirect('chat/'.$newChat->id);
+    }
+
+    //Get a list of users to start a new chat from a specific category
+    public function loadCategoryPage($categoryIndex, $page) : JsonResponse
+    {
+        /* @var CanChat $loggedUser */
+        $loggedUser = auth()->user();
+
+        //Get user startable chat categories
+        $result = $loggedUser->getStartableChatsCategories([]); //ADD FILTERS
+
+        //Check if return value is string (only display error message)
+        if(is_string($result))
+        {
+            return response()->json(['error' => $result], 400);
+        }
+
+        /** At this point, $result is an array of StartableChatCategory
+         *  @var StartableChatCategory[] $categories
+         */
+        $categories = $result;
+
+        //Get category by index
+        $category = $categories[$categoryIndex];
+
+        //Get page of users
+        $users = $category->query->skip($page * 50)->take(50)->get(['id','name']);
+
+        //Return users as blade component cells, already rendered and ready to be displayed
+        $returnHtml = '';
+
+        //Create a cell foreach user
+        foreach ($users as $user) {
+            $returnHtml .= view('chat::components.chat-cell', [
+                'id' => $user->id,
+                'chatName' => $user->name,
+                'secondLine' => "",
+                'isNewChat' => true,
+                'timeStamp' => "",
+                'imageUrl' => ""
+            ])->render();
+        }
+
+        //Return final html string
+        return response()->json($returnHtml, 200);
     }
 
 }
