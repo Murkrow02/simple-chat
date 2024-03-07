@@ -30,6 +30,7 @@
         }
     </style>
 
+    @script
     <script>
 
         // Set the chat header title
@@ -97,5 +98,6 @@
 
         }
     </script>
+    @endscript
 </div>
 

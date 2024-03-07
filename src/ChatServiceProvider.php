@@ -25,13 +25,14 @@ class ChatServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/simple-chat.php' => config_path('simple-chat.php'),], 'config');
         $this->publishes([
-            __DIR__.'/../resources/js' => public_path('js/simple-chat'), ], 'public');
+            __DIR__.'/../resources/js' => public_path('simple-chat/js'), ], 'public');
         $this->publishes([
-            __DIR__.'/../resources/css' => public_path('css/simple-chat'), ], 'public');
+            __DIR__.'/../resources/css' => public_path('simple-chat/css'), ], 'public');
         $this->publishes([
             __DIR__.'/../lang' => lang_path(''), ], 'lang');
 
         // Register Livewire components
         Livewire::component('single-chat', SingleChat::class);
+        Livewire::component('murkrow.chat.http.livewire.chat-home', ChatHome::class);
     }
 }

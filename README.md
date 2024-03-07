@@ -74,5 +74,10 @@ class User
 
 ## How it works
 
+### Livewire
+The major part of the UI is made with Livewire components and everything is handled by the corresponding php Livewire component class.
+The only exception is the message bubbles list, this works with standard axios requests and an Http controller.
+This is done to prevent excessive requests to the server and to keep the chat as smooth as possible.
+
 ### Events
 When a new message is sent, the package will broadcast a `NewMessage` event to the channel `chat.{chat_id}`.

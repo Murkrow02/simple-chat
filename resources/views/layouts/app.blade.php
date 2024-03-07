@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <title>Chat</title>
 
@@ -19,10 +20,6 @@
         :root{
             --chat-primary: {{config('simple-chat.primary_color')}};
         }
-        .bg-primary {
-            background-color: var(--chat-primary);
-            color: white;
-        }
     </style>
 
     @if(env('APP_ENV') === 'local')
@@ -31,11 +28,11 @@
 
     <!--Include vite generated file in order to use pusher npm-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="{{ asset('simple-chat/css/app.css') }}" rel="stylesheet" />
+    <script src="{{ asset('simple-chat/js/app.js') }}"></script>
 </head>
 
-<body>
-<script src="/js/simple-chat/avatar.js"></script>
-<script src="/js/simple-chat/simple-chat.js"></script>
+<body class="h-[100vh]">
 
 {{--<!-- Header -->--}}
 {{--<div class="chat-header">--}}
@@ -57,7 +54,6 @@
 {{ $slot }}
 
 @livewireScripts
-
 
 </body>
 

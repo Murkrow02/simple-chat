@@ -9,6 +9,7 @@
     {{--            onclick="window.location='/chat/new'+window.location.search;">{{__('simple-chat::chat.new_message')}}</button>--}}
 
 
+
     <!-- Main container -->
     <div class="flex flex-row h-full">
 
@@ -21,19 +22,26 @@
                 <button class="btn" onclick="newChat()">New chat</button>
             </div>
 
+            <!-- Chats -->
             @foreach($chats as $chat)
-                <x-chat::chat-cell :id="$chat['id']"
-                                   :chatName="$chat['title']"
-                                   secondLine=""
-                                   timeStamp=""
-                                   imageUrl=""/>
+                <div wire:click="switchChatTo({{$chat['id']}})">
+                    <x-chat::chat-cell :id="$chat['id']"
+                                       :chatName="$chat['title']"
+                                       secondLine=""
+                                       selected="{{$chat['id'] == $selectedChatId}}"
+                                       timeStamp=""
+                                       imageUrl=""/>
+                </div>
+
             @endforeach
         </div>
 
         <!-- Selected chat -->
-        <div class="flex-1">
-            <livewire:single-chat chat-id="1"/>
-        </div>
+        @if($selectedChatId != null)
+            <div class="flex-1">
+                <livewire:single-chat chat-id="1"/>
+            </div>
+        @endif
     </div>
 
 
@@ -56,6 +64,27 @@
                         addStartableChat(startableChat.id);
                     });
                 })
+        }
+
+        // Applies the avatar function and the proper action to given class cell
+        // Not using id as it could happen that the same person is in two categories at the same time (and so two elements will have same id)
+        function applyAvatarToCell(userId)
+        {
+            //If in page there is an element with class chat-cell, then cycle through each element
+            document.querySelectorAll(`[data-chat-id="${userId}"]`).forEach((cell) => {
+
+                //Get data-id from cell
+                let id = cell.getAttribute('data-chat-id');
+
+                //Set cell avatar for each element with class avatar-<id> (need to use class instead of id because same id could be used in multiple cells)
+                document.querySelectorAll('.avatar-' + id).forEach((avatar) => {
+                    new Avatar(avatar, {
+                        'useGravatar': false,
+                        'initials': getInitials(document.querySelector('.chat-title-' + id).innerText),
+                    });
+                });
+
+            });
         }
     </script>
 
