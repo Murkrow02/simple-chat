@@ -1,6 +1,6 @@
 
 
-<div class="chats-list">
+<div>
 
     {{-- Error --}}
     @if($errorMessage)
@@ -37,12 +37,12 @@
 
 
     <!-- The modal container for lazy-category loading -->
-    <div id="category-modal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="chats-list" id="chat-list-category">
+    <div id="category-modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
 
+        <!-- Modal content -->
+        <div class="bg-white p-20 rounded-lg shadow-lg">
+            <span class="absolute top-10 right-10 cursor-pointer" onclick="closeModal()">&times;</span>
+            <div class="max-w-600 mx-auto my-20" id="chat-list-category">
             </div>
         </div>
     </div>
@@ -71,49 +71,4 @@
         setChatHeaderTitle('{{__('simple-chat::chat.new_chat')}}');
     </script>
 
-
-    <style>
-        /* TODO MOVE TO STYLESHEET FILE */
-
-        /* Styles for the modal container */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Styles for the modal content */
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Style for the close button */
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-    </style>
-
 </div>
-
-<?php
-//$alreadyAddedIds = [];
-//                <?php
-//                // Prevent duplicate chats
-//                if (in_array($startableChat->id, $alreadyAddedIds)) {
-//                    continue;
-//                }
-//                $alreadyAddedIds[] = $startableChat->id;
-//
-?>

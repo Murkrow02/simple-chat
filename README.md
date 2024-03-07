@@ -72,6 +72,7 @@ class User
 }
 ```
 
-2 - Ove
+## How it works
 
-Finished!
+### Events
+When a new message is sent, the package will broadcast a `NewMessage` event to the channel `chat.{chat_id}`.

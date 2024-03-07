@@ -95,6 +95,7 @@ class ChatController extends Controller
 
         //Create a cell foreach user
         foreach ($users as $user) {
+
             $returnHtml .= view('chat::components.chat-cell', [
                 'id' => $user->id,
                 'chatName' => $user->name,

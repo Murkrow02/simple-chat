@@ -6,7 +6,8 @@ namespace Murkrow\Chat;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Murkrow\Chat\Http\Livewire\ChatCell;
-use Murkrow\Chat\Http\Livewire\ChatView;
+use Murkrow\Chat\Http\Livewire\SingleChat;
+use Murkrow\Chat\Http\Livewire\ChatHome;
 
 class ChatServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,7 @@ class ChatServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../lang' => lang_path(''), ], 'lang');
 
-        Livewire::component('murkrow.chat.http.livewire.chat-view', ChatView::class);
+        // Register Livewire components
+        Livewire::component('single-chat', SingleChat::class);
     }
 }

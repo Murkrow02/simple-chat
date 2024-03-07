@@ -1,31 +1,42 @@
 
-<div class="chat-container">
+<div class="flex-1 h-full flex flex-col p-5">
 
     <!-- No messages -->
-    <div id="no-messages-alert" style="padding: 15px">
+    <div id="no-messages-alert">
         <x-chat::alert type="info" :message="__('simple-chat::chat.no_messages')"/>
     </div>
 
     <!-- Chat messages -->
-    <div class="chat-messages" id="chat-messages">
+    <div class="flex-1 flex flex-col" id="chat-messages">
 
     </div>
 
-    <!-- Chat input -->
-    <div class="message-input">
-        <input wire:model.defer="newMessage" type="text" class="input-field" id="user-input"
+    <!-- Write new message -->
+    <div class="w-full flex flex-row">
+        <input wire:model.defer="newMessage" type="text" class="flex-1 rounded-l-lg" id="user-input"
                placeholder="{{__('simple-chat::chat.write_message')}}">
-        <button onclick="sendNewMessage()" class="btn send-button" id="send-button">{{__('simple-chat::chat.send')}}</button>
+        <button onclick="sendNewMessage()" class="bg-primary px-5 rounded-r-lg" id="send-button">{{__('simple-chat::chat.send')}}</button>
     </div>
+
+    <style>
+        .user-message {
+            background-color: var(--chat-primary);
+            align-self: flex-end;
+        }
+
+        .other-message {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+        }
+    </style>
 
     <script>
 
         // Set the chat header title
-        setChatHeaderTitle('{{$chatTitle}}');
+       // setChatHeaderTitle('{{$chatTitle}}');
 
-        const sendButton = document.getElementById('send-button');
-        const userMessageInput = document.getElementById('user-input');
-        const chatMessages = document.getElementById('chat-messages');
+        let userMessageInput = document.getElementById('user-input');
+        let chatMessages = document.getElementById('chat-messages');
 
         function scrollToBottom() {
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -35,7 +46,12 @@
         function addMessage(message, sentByLoggedUser) {
             document.getElementById('no-messages-alert').style.display = 'none';
             let msgClass = sentByLoggedUser ? 'user-message' : 'other-message';
-            chatMessages.innerHTML += `<div class="message ${msgClass}"><div class="message-text">${message}</div></div>`;
+            chatMessages.innerHTML +=
+                `<div class="my-1 px-4 py-2 rounded-xl text-white ${msgClass}">
+                    <div class="">
+                        ${message}
+                    </div>
+                </div>`;
         }
 
         // Event loaded when the page is loaded
@@ -56,6 +72,9 @@
         })
 
         function sendNewMessage() {
+
+            // Get the send button
+            let sendButton = document.getElementById('send-button');
 
             //Disable send button
             sendButton.disabled = true;

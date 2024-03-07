@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\Sanctum;
 use Murkrow\Chat\Http\Controllers\ChatController;
-use Murkrow\Chat\Http\Livewire\ChatsView;
-use Murkrow\Chat\Http\Livewire\ChatView;
+use Murkrow\Chat\Http\Livewire\ChatHome;
+use Murkrow\Chat\Http\Livewire\SingleChat;
 use Murkrow\Chat\Http\Livewire\NewChatFromCategoryView;
-use Murkrow\Chat\Http\Livewire\NewChatView;
+use Murkrow\Chat\Http\Livewire\StartableChatsList;
 use Murkrow\Chat\Http\Middleware\AuthTokenFromUrl;
 use Murkrow\Chat\Utils\Utils;
 
@@ -49,19 +49,19 @@ Route::prefix('chat')->middleware('web')->group(function () {
     Route::middleware('auth')->group(function () {
 
         //Get a list of users to start a new chat
-        Route::get('new', NewChatView::class);
+        Route::get('new', StartableChatsList::class);
 
         //Post new message to chat
         Route::post('newmessage', [ChatController::class, 'newMessage']);
 
         //Return a single chat with messages
-        Route::get('{chatId}', ChatView::class);
+        Route::get('{chatId}', SingleChat::class);
 
         //Start a new chat with requested user
         Route::get('new/{targetUserId}', [ChatController::class, 'startNewChat']);
 
         //Return all started chats
-        Route::get('', ChatsView::class);
+        Route::get('', ChatHome::class);
 
         //Lazy load a new page for a category of users to start a new chat
         Route::get('loadCategoryPage/{categoryIndex}/{page}',  [ChatController::class, 'loadCategoryPage']);

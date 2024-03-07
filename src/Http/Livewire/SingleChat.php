@@ -4,11 +4,17 @@ namespace Murkrow\Chat\Http\Livewire;
 
 use Livewire\Component;
 use Murkrow\Chat\Models\Chat;
+use Murkrow\Chat\Traits\CanChat;
+use Murkrow\Chat\Utils\Utils;
 
-class ChatView extends Component
+class SingleChat extends Component
 {
-    public Chat $chat;              //The chat that is being viewed
-    public $loggedUser;             //The logged user
+    public Chat $chat;
+
+    /**
+     * @var CanChat
+     */
+    public $loggedUser;
     public array $messages = [];    //The chat messages
     public string $newMessage = ''; //The message that is being typed
     public string $chatTitle = '';   //The chat title displayed in the header
@@ -19,10 +25,12 @@ class ChatView extends Component
         $this->chat = Chat::findOrFail($chatId);
 
         //Get all messages from chat
-        $this->loggedUser = auth()->user();
+        $this->loggedUser = Utils::getLoggedUser();
         $this->messages = $this->loggedUser
-            ->chats()->findOrFail($chatId)
-            ->messages()->get(['id','body','user_id'])->toArray();
+            ->chats()
+            ->findOrFail($chatId)
+            ->messages()
+            ->get(['id','body','user_id'])->toArray();
 
         //Get chat title
         $this->chatTitle = $this->chat->group ?
@@ -61,10 +69,12 @@ class ChatView extends Component
     }
 
     public bool $firstRender = true;
+
     public function render()
     {
-        return view('chat::livewire.chat-view')->layout('chat::layouts.app');
+        return view('chat::livewire.single-chat');
     }
+
 }
 
 

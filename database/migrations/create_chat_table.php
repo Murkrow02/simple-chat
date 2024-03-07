@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->boolean('group')->default(false);
+            $table->timestamp('last_message_at')->nullable();
             $table->timestamps();
         });
     }

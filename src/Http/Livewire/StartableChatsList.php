@@ -5,11 +5,10 @@ namespace Murkrow\Chat\Http\Livewire;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Murkrow\Chat\Models\Chat;
-use Murkrow\Chat\Models\Message;
 use Murkrow\Chat\Models\StartableChatCategory;
 use Murkrow\Chat\Traits\CanChat;
 
-class NewChatView extends Component
+class StartableChatsList extends Component
 {
 
     //How many chats to download at once
@@ -63,7 +62,7 @@ class NewChatView extends Component
 
     public function render()
     {
-        return view('chat::livewire.new-chat-view')->layout('chat::layouts.app');
+        return view('chat::livewire.startable-chats-list')->layout('chat::layouts.app');
     }
 }
 

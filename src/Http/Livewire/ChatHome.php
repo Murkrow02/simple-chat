@@ -7,8 +7,9 @@ use Livewire\Component;
 use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Models\Message;
 use Murkrow\Chat\Traits\CanChat;
+use Murkrow\Chat\Utils\Utils;
 
-class ChatsView extends Component
+class ChatHome extends Component
 {
 
     //How many chats to download at once
@@ -20,13 +21,20 @@ class ChatsView extends Component
     public function mount()
     {
         //Get all chats from logged user (only 50)
-        $chats = auth()->user()->chats()->select('chats.id', 'title', 'group')->limit(self::$downloadLimit)->get();
+        $chats = Utils::getLoggedUser()
+            ->chats()
+            ->select('chats.id', 'title', 'group')
+            ->limit(self::$downloadLimit)
+            ->get();
 
         //Fill non-group chats with the other username
         foreach ($chats as $chat) {
+
             //Set chat title if it is a private chat
             if(!$chat->group && $chat->title == null)
-                $chat->title = $chat->users()->where('user_id', '!=', auth()->user()->id)->first()->name;
+                $chat->title = $chat->users()->where('user_id', '!=', Utils::getLoggedUser()->id)->first()->name;
+
+
             $this->chats[] = $chat;
         }
     }
@@ -35,7 +43,7 @@ class ChatsView extends Component
 
     public function render()
     {
-        return view('chat::livewire.chats-view')->layout('chat::layouts.app');
+        return view('chat::livewire.chat-home')->layout('chat::layouts.app');
     }
 }
 

@@ -14,8 +14,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "laravel/framework": "^10.17",
-        "livewire/livewire": "^3.0@beta",
+        "laravel/framework": "*",
+        "livewire/livewire": "*",
         "pusher/pusher-php-server": "*",
         "laravel/sanctum": "*"
     },
@@ -32,5 +32,8 @@
             "@php artisan vendor:publish --tag=public",
             "@npm install --save-dev laravel-echo pusher-js axios"
         ]
+    },
+    "require-dev": {
+        "laravel/pint": "*"
     }
 }
