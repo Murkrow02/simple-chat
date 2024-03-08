@@ -2,3 +2,7 @@
     background-color: var(--chat-primary);
     color: white;
 }
+
+.active-chat-cell {
+    background-color: var(--chat-active-cell);
+}

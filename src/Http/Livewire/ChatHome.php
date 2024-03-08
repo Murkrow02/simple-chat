@@ -22,12 +22,13 @@ class ChatHome extends Component
     // Current chat opened
     public ?int $selectedChatId = null;
 
-    public function mount()
+    public function mount(): void
     {
         //Get all chats from logged user (only 50)
         $chats = Utils::getLoggedUser()
             ->chats()
             ->select('chats.id', 'title', 'group')
+            ->orderBy('last_message_at', 'desc')
             ->limit(self::$downloadLimit)
             ->get();
 
@@ -35,18 +36,15 @@ class ChatHome extends Component
         foreach ($chats as $chat) {
 
             //Set chat title if it is a private chat
-            if(!$chat->group && $chat->title == null)
+            if (!$chat->group && $chat->title == null)
                 $chat->title = $chat->users()->where('user_id', '!=', Utils::getLoggedUser()->id)->first()->name;
-
-
             $this->chats[] = $chat;
         }
     }
 
-
     #[NoReturn] public function switchChatTo($chatId): void
     {
-       $this->selectedChatId = $chatId;
+        $this->selectedChatId = $chatId;
     }
 
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Chat</title>
 
@@ -17,8 +18,9 @@
     </script>
 
     <style>
-        :root{
+        :root {
             --chat-primary: {{config('simple-chat.primary_color')}};
+            --chat-active-cell: {{config('simple-chat.active_chat_cell_color')}};
         }
     </style>
 
@@ -28,8 +30,11 @@
 
     <!--Include vite generated file in order to use pusher npm-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="{{ asset('simple-chat/css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('simple-chat/css/app.css') }}" rel="stylesheet"/>
     <script src="{{ asset('simple-chat/js/app.js') }}"></script>
+
+    @livewireScripts
+
 </head>
 
 <body class="h-[100vh]">
@@ -53,8 +58,8 @@
 <!-- Component rendered here -->
 {{ $slot }}
 
-@livewireScripts
 
 </body>
+</html>
 
 

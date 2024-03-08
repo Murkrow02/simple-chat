@@ -14,25 +14,26 @@
     <div class="flex flex-row h-full">
 
         <!-- Started chats -->
-        <div class="w-[20vw]">
+        <div class="w-1/4">
 
             <!-- Header -->
             <div class="flex flex-row items-center justify-between p-3 bg-primary text-white">
                 <h2 class="text-xl font-bold">Chats</h2>
-                <button class="btn" onclick="newChat()">New chat</button>
+                <a href="/chat/new" class="text-white">New chat</a>
             </div>
 
             <!-- Chats -->
             @foreach($chats as $chat)
-                <div wire:click="switchChatTo({{$chat['id']}})">
+                <div wire:click="switchChatTo({{$chat['id']}})"
+                     onclick="setActiveChatCellBackground(this)"
+                     wire:ignore
+                     wire:key="chat-{{$chat['id']}}">
                     <x-chat::chat-cell :id="$chat['id']"
                                        :chatName="$chat['title']"
                                        secondLine=""
-                                       selected="{{$chat['id'] == $selectedChatId}}"
                                        timeStamp=""
                                        imageUrl=""/>
                 </div>
-
             @endforeach
         </div>
 
@@ -65,27 +66,16 @@
                     });
                 })
         }
-
-        // Applies the avatar function and the proper action to given class cell
-        // Not using id as it could happen that the same person is in two categories at the same time (and so two elements will have same id)
-        function applyAvatarToCell(userId)
+        function setActiveChatCellBackground(cell)
         {
-            //If in page there is an element with class chat-cell, then cycle through each element
-            document.querySelectorAll(`[data-chat-id="${userId}"]`).forEach((cell) => {
-
-                //Get data-id from cell
-                let id = cell.getAttribute('data-chat-id');
-
-                //Set cell avatar for each element with class avatar-<id> (need to use class instead of id because same id could be used in multiple cells)
-                document.querySelectorAll('.avatar-' + id).forEach((avatar) => {
-                    new Avatar(avatar, {
-                        'useGravatar': false,
-                        'initials': getInitials(document.querySelector('.chat-title-' + id).innerText),
-                    });
-                });
-
-            });
+            // Remove any previous cell with active background
+            let activeCell = document.querySelector('.active-chat-cell');
+            if(activeCell != null)
+                activeCell.classList.remove('active-chat-cell');
+            cell.classList.add('active-chat-cell');
         }
+
+
     </script>
 
 </div>

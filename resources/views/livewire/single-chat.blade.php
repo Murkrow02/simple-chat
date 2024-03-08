@@ -58,6 +58,7 @@
         // Event loaded when the page is loaded
         document.addEventListener('livewire:initialized', () => {
 
+
             // Download all messages from the server and add them to the chat
             let messages = @js($messages);
             messages.forEach(message => {
