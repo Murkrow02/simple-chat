@@ -17,8 +17,8 @@
         <!-- Main container -->
         <div class="flex flex-row h-full">
 
-            <!-- Started chats -->
-            <div class="w-1/4 h-full flex flex-col">
+            <!-- LEFT Started chats -->
+            <div class="w-1/4 h-full flex flex-col absolute md:relative md:translate-x-0 -translate-x-full ease-out duration-300">
 
                 <!-- Header -->
                 <div class="flex flex-row items-center justify-between p-3 bg-primary text-white">
@@ -27,12 +27,12 @@
                 </div>
 
                 <!-- Chats -->
-                <div id="started-chats" class="border-r-4 h-full overflow-y-auto">
+                <div id="started-chats" class="border-r-2 h-full overflow-y-auto border-primary">
                 </div>
 
             </div>
 
-            <!-- Selected chat -->
+            <!-- RIGHT Selected chat -->
             <div class="flex-1" id="opened-chat" hidden>
                 <x-simple-chat::chat-view/>
             </div>

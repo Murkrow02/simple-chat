@@ -124,7 +124,9 @@ class ChatController extends Controller
         }
 
         //Return newly created message
-        return response()->json($newMessage->only(['id', 'body', 'user_id']));
+        return response()->json(view('simple-chat::components.chat-bubble', [
+            'message' => $newMessage,
+        ])->render());
     }
 
     /**

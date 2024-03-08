@@ -17,6 +17,7 @@
     <style>
         :root {
             --chat-primary: {{config('simple-chat.primary_color')}};
+            --chat-secondary: {{config('simple-chat.secondary_color')}};
             --chat-active-cell: {{config('simple-chat.active_chat_cell_color')}};
         }
     </style>

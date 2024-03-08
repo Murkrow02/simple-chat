@@ -8,6 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'primary_color' => '#008BD6',
+    'secondary_color' => '#00A1E0',
     'active_chat_cell_color' => '#f0f0f0',
 
     /*

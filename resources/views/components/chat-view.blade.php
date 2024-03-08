@@ -1,12 +1,17 @@
 <div class="flex-1 h-full flex flex-col">
 
+    <!-- Chat header -->
+    <div class="p-3 bg-secondary text-white text-center">
+        <h2 class="text-xl font-bold">{{__('simple-chat::chat.chat')}}</h2>
+    </div>
+
     <!-- Chat messages -->
     <div class="flex-1 flex flex-col overflow-y-auto px-4" id="chat-messages">
 
     </div>
 
     <!-- Write new message -->
-    <div class="w-full flex flex-row">
+    <div class="w-full flex flex-row border-t-2 border-primary">
         <input wire:model.defer="newMessage" type="text" class="flex-1 border-none" id="user-input"
                placeholder="{{__('simple-chat::chat.write_message')}}">
         <button onclick="sendNewMessage()" class="bg-primary px-5"
@@ -32,7 +37,7 @@
             // Download messages from selected chat
             axios.get('/chat/messages/' + newChatId)
                 .then(function (response) {
-
+                    chatMessages.innerHTML = response.data;
                     scrollToBottom();
                 })
                 .catch(function (error) {
@@ -42,8 +47,9 @@
 
         function sendNewMessage() {
 
-            //Disable send button
+            //Disable send button and text input
             sendButton.disabled = true;
+            userMessageInput.disabled = true;
 
             axios.post('/chat/newmessage', {
                 chat_id: currentChatId,
@@ -51,14 +57,17 @@
             })
                 .then(function (response) {
                     userMessageInput.value = '';
-                    addMessage(response.data.body, true);
+                    chatMessages.innerHTML += response.data;
                     scrollToBottom();
                 })
                 .catch(function (error) {
                     console.log(error);
                 }).finally(function () {
-                // always executed
+
+
+                // Enable send button and text input
                 sendButton.disabled = false;
+                userMessageInput.disabled = false;
             })
         }
 
@@ -66,29 +75,10 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-
-
-        {{--// Event loaded when the page is loaded--}}
-        {{--document.addEventListener('livewire:initialized', () => {--}}
-
-
-        {{--    // Download all messages from the server and add them to the chat--}}
-        {{--    let messages = @js($messages);--}}
-        {{--    messages.forEach(message => {--}}
-        {{--        addMessage(message.body, message.user_id === {{$loggedUser->id}});--}}
-        {{--    });--}}
-
-        {{--    --}}
-
-        {{--    // Listen for new messages--}}
-        {{--    Echo.private('chat.{{$chat['id']}}').listen('.new-message', function(data) {--}}
-        {{--        addMessage(data.body, false);--}}
-        {{--    });--}}
-        {{--})--}}
-
-
-
-        {{--}--}}
+        {{--// Listen for new messages--}}
+        {{--Echo.private('chat.{{$chat['id']}}').listen('.new-message', function(data) {--}}
+        {{--    //addMessage(data.body, false); RENDER MESSAGE BUBBLE FROM SERVER--}}
+        {{--});--}}
     </script>
 </div>
 
