@@ -87,8 +87,16 @@ class ChatController extends Controller
             ->messages()
             ->get(['id', 'body', 'user_id'])->toArray();
 
-        //Return messages
-        return response()->json($messages);
+        // Render chat bubbles
+        $returnHtml = '';
+        foreach ($messages as $message) {
+            $returnHtml .= view('simple-chat::components.chat-bubble', [
+                'message' => $message,
+            ])->render();
+        }
+
+        // Return chat bubbles
+        return response()->json($returnHtml);
     }
 
 

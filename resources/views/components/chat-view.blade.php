@@ -13,24 +13,12 @@
                 id="send-button">{{__('simple-chat::chat.send')}}</button>
     </div>
 
-    <style>
-        .user-message {
-            background-color: var(--chat-primary);
-            align-self: flex-end;
-        }
-
-        .other-message {
-            background-color: #e0e0e0;
-            align-self: flex-start;
-        }
-    </style>
-
     <script>
 
         // Get components
-        let userMessageInput = document.getElementById('user-input');
-        let chatMessages = document.getElementById('chat-messages');
-        let sendButton = document.getElementById('send-button');
+        let userMessageInput    =  document.getElementById('user-input');
+        let chatMessages        =  document.getElementById('chat-messages');
+        let sendButton          =  document.getElementById('send-button');
 
         let currentChatId = null;
         function currentChatChanged(newChatId) {
@@ -44,18 +32,12 @@
             // Download messages from selected chat
             axios.get('/chat/messages/' + newChatId)
                 .then(function (response) {
-                    chatMessages.innerHTML = '';
-                    response.data.forEach(message => {
-                        addMessage(message.body, message.user_id === {{ auth()->user()->id }} );
-                    });
+
                     scrollToBottom();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
-            scrollToBottom();
         }
 
         function sendNewMessage() {
@@ -78,18 +60,6 @@
                 // always executed
                 sendButton.disabled = false;
             })
-        }
-
-        // Append new message to chat messages
-        function addMessage(message, sentByLoggedUser) {
-            //document.getElementById('no-messages-alert').style.display = 'none';
-            let msgClass = sentByLoggedUser ? 'user-message' : 'other-message';
-            chatMessages.innerHTML +=
-                `<div class="my-1 px-4 py-2 rounded-xl text-white ${msgClass}">
-                    <div class="">
-                        ${message}
-                    </div>
-                </div>`;
         }
 
         function scrollToBottom() {
