@@ -48,23 +48,33 @@ Route::prefix('chat')->middleware('web')->group(function () {
     //Authenticated routes
     Route::middleware('auth')->group(function () {
 
-        //Get a list of users to start a new chat
-        Route::get('new', StartableChatsList::class);
+        // Chat home view
+        Route::get('', [ChatController::class, 'index']);
+
+        // Started chats
+        Route::get('chats', [ChatController::class, 'getChats']);
+
+        // Chat messages
+        Route::get('messages/{chatId}', [ChatController::class, 'getMessages']);
 
         //Post new message to chat
         Route::post('newmessage', [ChatController::class, 'newMessage']);
 
-        //Return a single chat with messages
-        Route::get('{chatId}', SingleChat::class);
+//        //Get a list of users to start a new chat
+//        Route::get('new', StartableChatsList::class);
+//
 
-        //Start a new chat with requested user
-        Route::get('new/{targetUserId}', [ChatController::class, 'startNewChat']);
-
-        //Return all started chats
-        Route::get('', ChatHome::class);
-
-        //Lazy load a new page for a category of users to start a new chat
-        Route::get('loadCategoryPage/{categoryIndex}/{page}',  [ChatController::class, 'loadCategoryPage']);
+//
+//        //Return a single chat with messages
+//        Route::get('{chatId}', SingleChat::class);
+//
+//        //Start a new chat with requested user
+//        Route::get('new/{targetUserId}', [ChatController::class, 'startNewChat']);
+//
+//        //Return all started chats
+//
+//        //Lazy load a new page for a category of users to start a new chat
+//        Route::get('loadCategoryPage/{categoryIndex}/{page}',  [ChatController::class, 'loadCategoryPage']);
     });
 });
 

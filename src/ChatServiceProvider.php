@@ -13,7 +13,7 @@ class ChatServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'chat');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'simple-chat');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'simple-chat');
@@ -32,7 +32,7 @@ class ChatServiceProvider extends ServiceProvider
             __DIR__.'/../lang' => lang_path(''), ], 'lang');
 
         // Register Livewire components
-        Livewire::component('single-chat', SingleChat::class);
-        Livewire::component('murkrow.chat.http.livewire.chat-home', ChatHome::class);
+//        Livewire::component('single-chat', SingleChat::class);
+//        Livewire::component('murkrow.chat.http.livewire.chat-home', ChatHome::class);
     }
 }

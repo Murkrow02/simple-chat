@@ -21,25 +21,7 @@ class SingleChat extends Component
 
     public function mount($chatId)
     {
-        //Get chat
-        $this->chat = Chat::findOrFail($chatId);
 
-        //Get all messages from chat
-        $this->loggedUser = Utils::getLoggedUser();
-        $this->messages = $this->loggedUser
-            ->chats()
-            ->findOrFail($chatId)
-            ->messages()
-            ->get(['id','body','user_id'])->toArray();
-
-        //Get chat title
-        $this->chatTitle = $this->chat->group ?
-
-            //If chat is a group, return chat title
-            $this->chat->title :
-
-            //If chat is a private chat, return the other user name
-            $this->chat->users()->where('user_id', '!=', $this->loggedUser->id)->first()->name;
     }
 
 

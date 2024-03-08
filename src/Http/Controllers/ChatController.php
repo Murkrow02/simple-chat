@@ -14,9 +14,84 @@ use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Models\Message;
 use Murkrow\Chat\Models\StartableChatCategory;
 use Murkrow\Chat\Traits\CanChat;
+use Murkrow\Chat\Utils\Utils;
 
 class ChatController extends Controller
 {
+
+
+    /**
+     * Displays the chat home view and loads the first chat cells
+     * @return View
+     */
+    public function index(): View
+    {
+        return view('simple-chat::chat-home');
+    }
+
+    /**
+     */
+    public function getChats()
+    {
+        // Get pagination page
+        $page = request('page') ?? 0;
+
+        //Get all chats from logged user
+        $chats = Utils::getLoggedUser()
+            ->chats()
+            ->select('chats.id', 'title', 'group')
+            ->orderBy('last_message_at', 'desc')
+            ->skip($page * config('simple-chat.chats_per_page'))
+            ->limit(config('simple-chat.max_chats_download_limit'))
+            ->get();
+
+        // Create blade component for each chat
+        $newChatCells = '';
+        foreach ($chats as $chat) {
+
+            //Set chat title if it is a private chat
+            if (!$chat->group && $chat->title == null)
+                $chat->title = $chat->users()->where('user_id', '!=', Utils::getLoggedUser()->id)->first()->name;
+
+            // Create blade component
+            $newChatCell = view('simple-chat::components.chat-cell', [
+                'id' => $chat->id,
+                'chatName' => $chat->title,
+                'secondLine' => $chat->group ? 'Group chat' : '',
+                'isNewChat' => false,
+                'timeStamp' => $chat->last_message_at,
+                'imageUrl' => $chat->group ? asset('images/group-chat-icon.png') : asset('images/user-chat-icon.png')
+            ])->render();
+
+            // Add onclick event to open chat, replace first div tag
+            $newChatCell = preg_replace('/<div/', '<div onclick="openChat(this)"', $newChatCell, 1);
+
+            // Add to final html string
+            $newChatCells .= $newChatCell;
+        }
+
+        // Return new chat cells
+        return response()->json($newChatCells);
+    }
+
+    public function getMessages($chatId)
+    {
+        // Get pagination page
+        $page = request('page') ?? 0;
+
+        // Get all messages from chat
+        $loggedUser = Utils::getLoggedUser();
+        $messages = $loggedUser
+            ->chats()
+            ->findOrFail($chatId)
+            ->messages()
+            ->get(['id', 'body', 'user_id'])->toArray();
+
+        //Return messages
+        return response()->json($messages);
+    }
+
+
     //Post new message to specified chat
     public function newMessage(): JsonResponse
     {
@@ -24,7 +99,7 @@ class ChatController extends Controller
         $loggedUser = auth()->user();
 
         /*  @var Chat $chat
-            Find desired chat and check if user is in chat  */
+         * Find desired chat and check if user is in chat  */
         $chat = Chat::findOrFail(request('chat_id'));
         if (!$chat->users()->where('user_id', $loggedUser->id)->exists()) {
             abort(403);
@@ -35,7 +110,7 @@ class ChatController extends Controller
 
         //Try to send message with pusher but don't crash if fail
         try {
-            NewMessageEvent::dispatch($newMessage);
+           // NewMessageEvent::dispatch($newMessage);
         } catch (Exception $e) {
 
         }
@@ -57,15 +132,15 @@ class ChatController extends Controller
 
         //Start new chat with user
         $newChat = $loggedUser->startPrivateChat($targetUserId);
-        if(!$newChat){
+        if (!$newChat) {
             abort(404);
         }
 
-        return redirect('chat/'.$newChat->id);
+        return redirect('chat/' . $newChat->id);
     }
 
     //Get a list of users to start a new chat from a specific category
-    public function loadCategoryPage($categoryIndex, $page) : JsonResponse
+    public function loadCategoryPage($categoryIndex, $page): JsonResponse
     {
         /* @var CanChat $loggedUser */
         $loggedUser = auth()->user();
@@ -74,13 +149,12 @@ class ChatController extends Controller
         $result = $loggedUser->getStartableChatsCategories([]); //ADD FILTERS
 
         //Check if return value is string (only display error message)
-        if(is_string($result))
-        {
+        if (is_string($result)) {
             return response()->json(['error' => $result], 400);
         }
 
         /** At this point, $result is an array of StartableChatCategory
-         *  @var StartableChatCategory[] $categories
+         * @var StartableChatCategory[] $categories
          */
         $categories = $result;
 
@@ -88,7 +162,7 @@ class ChatController extends Controller
         $category = $categories[$categoryIndex];
 
         //Get page of users
-        $users = $category->query->skip($page * 50)->take(50)->get(['id','name']);
+        $users = $category->query->skip($page * 50)->take(50)->get(['id', 'name']);
 
         //Return users as blade component cells, already rendered and ready to be displayed
         $returnHtml = '';

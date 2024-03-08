@@ -1,6 +1,10 @@
 # simple-chat
 A simple Laravel package to add intuitive and simple chat logic to your application
 
+## Requirements
+- Axios
+- TailwindCSS
+
 ## Installation
 1 - Install the package via composer:
 ```bash

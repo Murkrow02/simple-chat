@@ -15,7 +15,6 @@
     "prefer-stable": true,
     "require": {
         "laravel/framework": "*",
-        "livewire/livewire": "*",
         "pusher/pusher-php-server": "*",
         "laravel/sanctum": "*"
     },
