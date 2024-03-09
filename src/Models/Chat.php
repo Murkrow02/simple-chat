@@ -24,6 +24,7 @@ class Chat extends Model
 
     protected $casts = [
         'group' => 'boolean',
+        'last_message_at' => 'datetime'
     ];
 
     /*

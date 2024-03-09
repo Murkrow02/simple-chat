@@ -19,4 +19,5 @@ return [
     'user_class' => 'App\\Models\\User',
     'max_chats_download_limit' => 50,
     'max_messages_download_limit' => 200,
+    'go_back_url' => '/',
 ];

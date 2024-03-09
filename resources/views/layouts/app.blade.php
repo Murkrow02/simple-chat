@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Chat</title>
     <meta charset="UTF-8">
@@ -29,23 +29,15 @@
 
     <!-- Assets -->
     <link href="{{ asset('simple-chat/css/app.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('simple-chat/js/app.js') }}"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="h-[100vh]">
-
-{{--<header>--}}
-{{--    @yield('title')--}}
-{{--</header>--}}
-
 @yield('content')
-
-<footer>
-    <!-- Footer content goes here -->
-</footer>
-
 </body>
+
+<script src="{{ asset('simple-chat/js/app.js') }}"></script>
+
 </html>
 
 

@@ -1,14 +1,24 @@
-<div data-chat-id="{{$id}}" class="flex items-center p-4 border-b border-gray-300 cursor-pointer"
-     data-chat-new="{{isset($isNewChat) && $isNewChat  ? "true" : "false"}}">
-    <img class="avatar-{{$id}} w-[50px] h-[50px] object-cover rounded-full mr-5" alt="user-avatar"/>
-    <div class="flex-1">
-        <div class="chat-title-{{$id}} text-bold">{{$chatName}}</div>
-        <div class="chat-desc">{{$secondLine}}</div>
-    </div>
-    <div class="chat-time">{{$timeStamp}}</div>
+<div class="flex items-center p-4 border-b border-gray-300 cursor-pointer"
+     onclick="
+                @if($chatId)
+                openChat({{$chatId}}, this)
+                @else
+                startNewChat({{$userId}}, this)
+                @endif
+            ">
 
-    <script>
-        applyAvatarToCell('{{$id}}');
-    </script>
+
+    <img class="w-[50px] h-[50px] object-cover rounded-full mr-5" alt="user-avatar"/>
+
+
+    <div class="flex-1">
+        <div class="text-black text-lg">{{$chatName}}</div>
+        <div class="text-gray-500 text-base">{{$secondLine}}</div>
+    </div>
+
+
+    <div class="text-xs text-gray-500">
+        {{$timeStamp}}
+    </div>
 
 </div>
