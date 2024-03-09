@@ -14,8 +14,12 @@
 
     <!-- Write new message -->
     <div class="w-full flex flex-row border-t-2 border-primary">
-        <input wire:model.defer="newMessage" type="text" class="flex-1 border-none" id="user-input"
-               placeholder="{{__('simple-chat::chat.write_message')}}">
+        <textarea wire:model.defer="newMessage"
+                  type="text"
+                  class="flex-1 border-none h-[50px] p-3 resize-none"
+                  id="user-input"
+                  placeholder="{{__('simple-chat::chat.write_message')}}">
+        </textarea>
         <button onclick="sendNewMessage()" class="bg-primary px-5"
                 id="send-button">{{__('simple-chat::chat.send')}}</button>
     </div>

@@ -3,9 +3,11 @@
 namespace Murkrow\Chat\Traits;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Query\Builder;
 use Murkrow\Chat\Models\Chat;
+use Murkrow\Chat\Utils\Utils;
 
 /**
  * @method hasMany(string $class)
@@ -25,6 +27,11 @@ trait CanChat
         return $this->belongsToMany(Chat::class, 'user_chats_pivot', 'user_id', 'chat_id');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Attributes
+    |--------------------------------------------------------------------------
+    */
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +41,7 @@ trait CanChat
 
     public function getUsersToStartChatWith() : Builder
     {
-        return User::getQuery();
+        return Utils::getUserClass()::getQuery();
     }
 
     /**

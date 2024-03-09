@@ -111,8 +111,10 @@ class ChatController extends Controller
             ->limit(config('simple-chat.max_chats_download_limit'))
             ->get();
 
+
         // Create blade component for each user
         $newUserCells = '';
+        /** @var CanChat $user */
         foreach ($users as $user) {
 
             // Create blade component
@@ -120,7 +122,7 @@ class ChatController extends Controller
                 'userId' => $user->id,
                 'chatId' => '',
                 'chatName' => $user->name,
-                'secondLine' => 'ruolo magari',
+                'secondLine' =>"Metti ruolo",
                 'timeStamp' => '',
             ])->render();
 

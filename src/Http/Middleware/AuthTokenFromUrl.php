@@ -9,7 +9,7 @@ class AuthTokenFromUrl
 {
     public function handle($request, Closure $next)
     {
-        $token = $request->route('token'); // Adjust the parameter name accordingly
+        $token = $request->route('token');
 
         if ($token) {
             $request->headers->set('Authorization', 'Bearer ' . base64_decode($token));

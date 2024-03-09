@@ -12,15 +12,25 @@
 
 
                 <!-- Header -->
-                <div class="flex flex-row items-center justify-between p-3 bg-primary text-white">
+                <div class="flex flex-row items-center justify-between p-3 bg-primary text-white h-[90px]">
+
+                    <!-- Go back button and title -->
                     <div class="flex flex-row">
-                        <a href="{{config('simple-chat.go_back_url')}}" class="text-white mr-2">Back</a>
-                        <h2 class="text-xl font-bold">Chats</h2>
+                        <h2 class="text-3xl font-bold">Chats</h2>
                     </div>
 
+                    <!-- New chat button and close button -->
+                    <div>
+                        <button id="new-chat-btn" onclick="showNewChatSlideover()" class="text-white">
+                           New
+                        </button>
 
-                    <button id="new-chat-btn" onclick="showNewChatSlideover()" class="text-white">New chat</button>
-                    <button id="close-new-chat-btn" onclick="hideNewChatSlideover()" class="text-white hidden">Back</button>
+                        <button id="close-new-chat-btn" onclick="hideNewChatSlideover()" class="text-white hidden">
+                            Close
+                        </button>
+
+                    </div>
+
                 </div>
 
                 <!-- Loading -->

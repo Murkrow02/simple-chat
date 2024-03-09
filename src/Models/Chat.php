@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
+use Murkrow\Chat\Utils\Utils;
 
 /**
  * @property int $id
@@ -41,7 +42,7 @@ class Chat extends Model
     public function users(): BelongsToMany
     {
         //Return from pivot user chats
-        return $this->belongsToMany(config('simple-chat.user_class'), 'user_chats_pivot', 'chat_id', 'user_id');
+        return $this->belongsToMany(Utils::getUserClass(), 'user_chats_pivot', 'chat_id', 'user_id');
     }
 
     /*
