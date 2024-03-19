@@ -67,7 +67,7 @@ window.Echo = new Echo({
 > Make sure to have uncommented App\Providers\BroadcastServiceProvider::class in your config/app.php file
 
 ## Usage
-1 - Add the `CanChat` trait to your User model:
+Add the `CanChat` trait to your User model:
 ```php
 use Murkrow\Chat\Traits\CanChat;
 class User
@@ -76,12 +76,33 @@ class User
 }
 ```
 
-## How it works
+Customize the trait by overriding the following methods:
+```php
+class User
+{
+    use CanChat;
 
-### Livewire
-The major part of the UI is made with Livewire components and everything is handled by the corresponding php Livewire component class.
-The only exception is the message bubbles list, this works with standard axios requests and an Http controller.
-This is done to prevent excessive requests to the server and to keep the chat as smooth as possible.
+    public function getSecondLineAttribute(): string
+    {
+        return $this->email;
+    }
+    public function getAvatarUrlAttribute(): string
+    {
+        return $this->avatar;
+    }
+    public function getUsersToStartChatWith() : Builder
+    {
+        return Utils::getUserClass()::where('id', '!=', $this->id);
+    }
+
+    public function canChatWith($targetUserId): bool
+    {
+        return $targetUserId->role !== 'admin';
+    }
+}
+```
+
+
 
 ### Events
 When a new message is sent, the package will broadcast a `NewMessage` event to the channel `chat.{chat_id}`.

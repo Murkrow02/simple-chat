@@ -29,6 +29,8 @@ class ChatServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/css' => public_path('simple-chat/css'), ], 'public');
         $this->publishes([
+            __DIR__.'/../resources/img' => public_path('simple-chat/img'), ], 'public');
+        $this->publishes([
             __DIR__.'/../lang' => lang_path(''), ], 'lang');
 
         // Register Livewire components

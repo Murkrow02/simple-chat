@@ -22,11 +22,16 @@
                     <!-- New chat button and close button -->
                     <div>
                         <button id="new-chat-btn" onclick="showNewChatSlideover()" class="text-white">
-                           New
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                            </svg>
+
                         </button>
 
                         <button id="close-new-chat-btn" onclick="hideNewChatSlideover()" class="text-white hidden">
-                            Close
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                            </svg>
                         </button>
 
                     </div>
@@ -34,7 +39,7 @@
                 </div>
 
                 <!-- Loading -->
-                <div id="loading-spinner">
+                <div id="chats-loading-spinner">
                     <x-simple-chat::loading-spinner/>
                 </div>
 

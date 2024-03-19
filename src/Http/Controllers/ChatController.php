@@ -5,6 +5,7 @@ namespace Murkrow\Chat\Http\Controllers;
 use DB;
 use Exception;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
@@ -52,8 +53,12 @@ class ChatController extends Controller
         foreach ($chats as $chat) {
 
             //Set chat title if it is a private chat
-            if (!$chat->group && $chat->title == null)
-                $chat->title = $chat->users()->where('user_id', '!=', Utils::getLoggedUser()->id)->first()->name;
+            $otherUser = null;
+            if (!$chat->group)
+            {
+                $otherUser = $chat->users()->where('user_id', '!=', Utils::getLoggedUser()->id)->first();
+                $chat->title = $otherUser->name;
+            }
 
             // Create blade component
             $newChatCell = view('simple-chat::components.chat-cell', [
@@ -61,7 +66,7 @@ class ChatController extends Controller
                 'chatName' => $chat->title,
                 'secondLine' => $chat->group ? 'Group chat' : '',
                 'timeStamp' => $chat->last_message_at?->diffForHumans(),
-                'imageUrl' => $chat->group ? asset('images/group-chat-icon.png') : asset('images/user-chat-icon.png')
+                'imageUrl' => $otherUser ? $otherUser->avatar_url : '',
             ])->render();
 
             // Add to final html string
@@ -111,7 +116,6 @@ class ChatController extends Controller
             ->limit(config('simple-chat.max_chats_download_limit'))
             ->get();
 
-
         // Create blade component for each user
         $newUserCells = '';
         /** @var CanChat $user */
@@ -122,7 +126,8 @@ class ChatController extends Controller
                 'userId' => $user->id,
                 'chatId' => '',
                 'chatName' => $user->name,
-                'secondLine' =>"Metti ruolo",
+                'secondLine' => $user->second_line,
+                'imageUrl' => $user->avatar_url,
                 'timeStamp' => '',
             ])->render();
 
@@ -174,14 +179,14 @@ class ChatController extends Controller
         /* @var CanChat $loggedUser */
         $loggedUser = auth()->user();
 
-        //Check that user can actually chat with target user
-        if($loggedUser->cannotChatWith($targetUserId))
-            abort(403);
-
         //Check that user exists and is not the same as the current user
         $targetUser = config('simple-chat.user_class')::find($targetUserId);
         if(!$targetUser || $targetUserId == $loggedUser->id)
             abort(404);
+
+        //Check that user can actually chat with target user
+        if($loggedUser->cannotChatWith($targetUser))
+            abort(403);
 
         //Check if chat already exists
         /** @var Chat $chat */

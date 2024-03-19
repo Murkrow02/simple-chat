@@ -2,10 +2,8 @@
 
 namespace Murkrow\Chat\Traits;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Query\Builder;
 use Murkrow\Chat\Models\Chat;
 use Murkrow\Chat\Utils\Utils;
 
@@ -32,23 +30,31 @@ trait CanChat
     | Attributes
     |--------------------------------------------------------------------------
     */
+    public function getAvatarUrlAttribute(): string
+    {
+        return '/simple-chat/img/avatar.svg';
+    }
+
+    public function getSecondLineAttribute(): string
+    {
+        return '';
+    }
 
     /*
     |--------------------------------------------------------------------------
     | Methods
     |--------------------------------------------------------------------------
     */
-
     public function getUsersToStartChatWith() : Builder
     {
-        return Utils::getUserClass()::getQuery();
+        return Utils::getUserClass()::where('id', '!=', $this->id);
     }
 
     /**
      * This method is invoked whenever a user intends to start a new chat with another one
      * Just return true or false to allow/deny the new chat creation
      */
-    public function canChatWith($targetUserId): bool
+    public function canChatWith($targetUser): bool
     {
         return true;
     }
@@ -56,9 +62,8 @@ trait CanChat
     /**
      * Basically calls canChatWith and negates the result
      */
-    public function cannotChatWith($targetUserId): bool
+    public function cannotChatWith($targetUser): bool
     {
-        return !$this->canChatWith($targetUserId);
+        return !$this->canChatWith($targetUser);
     }
-
 }

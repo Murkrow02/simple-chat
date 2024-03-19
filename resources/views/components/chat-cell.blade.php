@@ -8,7 +8,7 @@
             ">
 
 
-    <img class="w-[50px] h-[50px] object-cover rounded-full mr-5" alt="user-avatar"/>
+    <img class="w-[50px] h-[50px] object-cover rounded-full mr-5" alt="user-avatar" src="{{$imageUrl}}"/>
 
 
     <div class="flex-1">

@@ -2,9 +2,18 @@
 
     <!-- Chat header -->
     <div class="p-3 bg-secondary text-white text-center flex flex-row justify-between lg:justify-center">
-        <button onclick="showSlideOver()" class="lg:hidden">Left</button>
+        <button onclick="showSlideOver()" class="lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+            </svg>
+        </button>
         <h2 class="text-xl font-bold">{{__('simple-chat::chat.chat')}}</h2>
         <p class="lg:hidden"></p>
+    </div>
+
+    <!-- Loading -->
+    <div id="chat-loading-spinner">
+        <x-simple-chat::loading-spinner/>
     </div>
 
     <!-- Chat messages -->
