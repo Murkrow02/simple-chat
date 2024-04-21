@@ -30,9 +30,10 @@ trait CanChat
     | Attributes
     |--------------------------------------------------------------------------
     */
+
     public function getAvatarUrlAttribute(): string
     {
-        return '/simple-chat/img/avatar.svg';
+        return $this->getDefaultAvatarUrl();
     }
 
     public function getSecondLineAttribute(): string
@@ -65,5 +66,10 @@ trait CanChat
     public function cannotChatWith($targetUser): bool
     {
         return !$this->canChatWith($targetUser);
+    }
+
+    public function getDefaultAvatarUrl(): string
+    {
+        return '/simple-chat/img/avatar.svg';
     }
 }
