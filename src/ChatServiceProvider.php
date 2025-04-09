@@ -32,6 +32,9 @@ class ChatServiceProvider extends ServiceProvider
             __DIR__.'/../resources/img' => public_path('simple-chat/img'), ], 'public');
         $this->publishes([
             __DIR__.'/../lang' => lang_path(''), ], 'lang');
+        // Migrations
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations'), ], 'migrations');
 
         // Register Livewire components
 //        Livewire::component('single-chat', SingleChat::class);
